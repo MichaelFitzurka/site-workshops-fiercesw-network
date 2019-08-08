@@ -1,0 +1,64 @@
+// Import patternfly.less and patternfly-additions.less
+@import "patternfly/dist/less/patternfly";
+@import "patternfly/dist/less/patternfly-additions";
+
+// Import patternfly variables due to the -additions separation
+@import "patternfly/dist/less/variables";
+
+// Change the path of fonts and images to be relative to your project
+@font-path: "../node_modules/patternfly/dist/fonts";
+@img-path: "../node_modules/patternfly/dist/img";
+
+// Put your styles here
+body {
+  background:#f2f2f2;
+}
+footer#footer p.text-center {
+  border-top:1px solid #CCC;
+  margin:3rem 0;
+  padding:3rem 0;
+}
+.jumbotron {
+  background:url('/img/bkg.jpg') no-repeat center center / cover;
+}
+.jumbotron h1 {
+  color:#FFF;
+  text-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+  padding:2rem 0;
+  margin:1rem 0 0 -3rem;
+}
+.navbar-inverse {
+  box-shadow:0px 0px 3px 3px rgba(0,0,0,0.5);
+}
+.navbar-brand {
+  padding:5px !important;
+}
+.navbar-brand > img {
+  max-height:50px !important;
+  position: relative;
+  top: -5px;
+}
+
+.card-pf-view.card-pf-view-select {
+  transition: box-shadow 500ms ease;
+}
+.card-pf-view.card-pf-view-select span.fa {
+  border-color:#333;
+  transition: border 500ms ease;
+}
+.card-pf-view.card-pf-view-select:hover span.fa {
+  border-color:#39a5dc;
+}
+.card-pf-top-element img {
+    max-width: 100%;
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    opacity:0.75;
+    transition: 300ms;
+}
+
+.card-pf-view.card-pf-view-select:hover .card-pf-top-element img {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    opacity:1;
+}

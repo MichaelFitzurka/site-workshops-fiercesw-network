@@ -1,0 +1,14 @@
+{
+    "name": "Fierce Software",
+    "short_name": "Fierce Software",
+    "icons": [
+        {
+            "src": "/icons/android-chrome-192x192.png?v=RyM0PL93nM",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
