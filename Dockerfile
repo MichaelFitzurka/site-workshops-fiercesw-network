@@ -73,7 +73,8 @@ RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/defau
 #Build the Main Site Index
 RUN git clone https://github.com/FierceSoftware/site-workshops-fiercesw-network && \
     cd site-workshops-fiercesw-network && \
-    cd main-index && 
+    cd main-index && \
+    npm install && npm start && \
     cp -R * /var/www/html/    
 
 #Build the Red Hat Workshops
