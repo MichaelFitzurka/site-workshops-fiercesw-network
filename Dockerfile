@@ -62,16 +62,31 @@ RUN \
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
+RUN mkdir -p /etc/nginx/sites-available/ && \
+    mkdir -p /etc/nginx/sites-enabled/ && \
+    mkdir -p /etc/nginx/ssl/ && \
+    rm -Rf /var/www/* && \
+    mkdir -p /var/www/html/{redhat,cloudera}
+ADD conf/default-site /etc/nginx/sites-available/default.conf
+RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
+
 #Build the Main Site Index
 RUN git clone https://github.com/FierceSoftware/site-workshops-fiercesw-network && \
     cd site-workshops-fiercesw-network && \
     cd main-index && 
-    
+    cp -R * /var/www/html/    
 
 #Build the Red Hat Workshops
-
+RUN cd site-workshops-fiercesw-network && \
+    cd redhat && \
+    hugo && \
+    cp -R public/* /var/www/html/redhat/
 
 #Build the Cloudera Workshops
+RUN cd site-workshops-fiercesw-network && \
+    cd cloudera && \
+    hugo && \
+    cp -R public/* /var/www/html/cloudera/
 
 #Serve it up
 #VOLUME ["/var/cache/nginx"]
