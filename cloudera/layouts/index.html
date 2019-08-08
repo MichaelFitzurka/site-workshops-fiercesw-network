@@ -1,0 +1,65 @@
+{{ .Scratch.Set "BodyClass" "cards-pf" }}{{ partial "header" . }}
+
+<div id="particles" class="particle_inside jumbotron-home jumbotron text-center">
+  <div id="introoo" class="inside-pages">
+  <h1>{{ .Site.Title }}</h1>
+  <h2>{{ .Site.Params.Description }}</h2>
+</div>
+</div>
+
+<div class="container container-cards-pf">
+  <div class="row row-cards-pf">
+    {{ range where .Site.Menus.main "Identifier" "workshops" }}
+      {{ range .Children }}
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card-pf card-pf-view card-pf-view-select card-pf-view-single-select">
+            <div class="card-pf-body">
+              <div class="card-pf-top-element">
+                <span class="{{ .Pre | default "pficon pficon-bundle" }} card-pf-icon-circle"></span>
+              </div>
+              <h2 class="card-pf-title text-center">{{ .Name }}</h2>
+              <p class="card-pf-info text-center">
+                <a class="view-workshop-url" href="{{ .URL }}">View Workshop</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+<script>
+  $(function() {
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
+
+    $('.card-pf-view-single-select').click(function(event) {
+      window.location.href = $('a.view-workshop-url', this).attr('href');
+    });
+  });
+</script>
+
+<script src="{{ "/cloudera/js/jquery.particleground.min.js" }}"></script>
+<script type="text/javascript">
+<!--
+document.addEventListener('DOMContentLoaded', function () {
+  particleground(document.getElementById('particles'), {
+    dotColor: '#30551f',
+    lineColor: '#30551f',
+	particleRadius: 10,
+	minSpeedX: 0.3,
+	minSpeedY: 0.3,
+
+    density: 10000
+  });
+  //var intro = document.getElementById('introoo');
+  //intro.style.marginTop = - intro.offsetHeight / 2 + 'px';
+}, false);
+-->
+</script>
+
+{{ partial "footer" . }}

@@ -1,0 +1,25 @@
+title = "Cloudera Workshops"
+# Removing the baseURL allows for local development (loads the assets properly)
+baseURL = "https://workshops.fiercesw.network/cloudera/"
+theme = "fiercesw-hwx"
+languageCode = "en-us"
+metaDataFormat = "yaml"
+
+[params]
+    description = "Brought to you by Fierce Software"
+
+[taxonomies]
+    workshop = "workshops"
+
+[blackfriday]
+    smartypants = false
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "Workshops"
+    identifier = "workshops"
+    weight = 100
