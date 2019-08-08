@@ -54,7 +54,7 @@ RUN \
     --with-http_v2_module && \
   make && \
   make install && \
-  sed -i -e 's/#access_log  logs\/access.log  main;/access_log \/dev\/stdout;/' -e 's/#error_log  logs\/error.log  notice;/error_log stderr notice;/' /etc/nginx/nginx.conf && \
+  ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log && \
   adduser -D nginx && \
   rm -rf /tmp/* && \
   apk del ${build_pkgs} && \
