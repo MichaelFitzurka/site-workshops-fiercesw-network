@@ -23,5 +23,12 @@ spec:
         kind: DockerImage
         name: 'node:8-alpine'
     type: Docker
+  triggers:
+    - github:
+        secret: secret101
+      type: GitHub
+    - generic:
+        secret: secret101
+      type: Generic
 status:
   lastVersion: 0
