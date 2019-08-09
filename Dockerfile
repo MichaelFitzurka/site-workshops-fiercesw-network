@@ -93,7 +93,7 @@ RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd / && rm -rf /tmp/*
 
 #Serve it up
-#VOLUME ["/var/cache/nginx"]
+VOLUME ["/var/cache/nginx"]
 
 EXPOSE 8080
 
