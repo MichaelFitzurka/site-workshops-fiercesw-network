@@ -30,6 +30,16 @@ server {
 		# as directory, then fall back to index.html
 		try_files $uri $uri/ =404;
 	}
+	
+	# idiot proof...
+	location /redhat {
+                alias /var/www/html/redhat/;
+                try_files $uri $uri/ =404;
+        }
+        location /cloudera {
+                alias /var/www/html/cloudera/;
+                try_files $uri $uri/ =404;
+        }
 
 	error_page 404 /404.html;
         location = /404.html {
@@ -66,4 +76,10 @@ server {
                 auth_basic off;
         }
 
+}
+# More idiot proofing...
+server {
+    listen 8080;
+    server_name www.workshops.fiercesw.network workshops.fiercesw.com www.workshops.fiercesw.com;
+    return 302 $scheme://workshops.fiercesw.network$request_uri;
 }
