@@ -32,12 +32,12 @@ server {
 	}
 	
 	# idiot proof...
-	location /redhat {
-                root /var/www/html/redhat;
+	location ^~ /redhat {
+                alias /var/www/html/redhat/;
                 try_files $uri $uri/ =404;
 		#return 302 /redhat/;
         }
-        location /cloudera {
+        location ^~ /cloudera {
                 root /var/www/html/cloudera;
                 try_files $uri $uri/ =404;
 		#return 302 /cloudera/;
