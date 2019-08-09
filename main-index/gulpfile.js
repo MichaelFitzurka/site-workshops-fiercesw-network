@@ -24,8 +24,7 @@ gulp.task('less', function () {
             }
 
         }))
-        .pipe(gulp.dest('css'))
-        .pipe(reload({stream:true}));
+        .pipe(gulp.dest('css'));
 });
 
 
