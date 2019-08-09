@@ -13,7 +13,7 @@ spec:
     insecureEdgeTerminationPolicy: Redirect
   to:
     kind: Service
-    name: workshops-fiercesw-netwo
+    name: fiercesw-workshops
     weight: 100
   wildcardPolicy: None
 status:
