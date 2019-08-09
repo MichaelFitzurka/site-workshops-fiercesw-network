@@ -1,7 +1,7 @@
 FROM node:8-alpine
 
 # Install base packages
-RUN apk -U add wget tar gzip git
+RUN apk -U add wget tar gzip git asciidoctor
 
 # Install Hugo
 RUN wget -c https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.tar.gz -O - | tar -xz && mv hugo /usr/local/bin/hugo
