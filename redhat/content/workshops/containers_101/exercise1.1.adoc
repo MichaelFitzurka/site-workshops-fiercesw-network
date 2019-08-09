@@ -1,0 +1,91 @@
+---
+title: "Exercise 1.1 - Pulling and Running Container Images"
+workshops: containers_101
+workshop_weight: 30
+layout: lab
+---
+
+:badges:
+:icons: font
+:imagesdir: /workshops/containers_101/images
+:source-highlighter: highlight.js
+:source-language: yaml
+
+= Exercise 1.1 - Pulling Container Images
+
+== Pull Images
+
+Use the following command to pull a RHEL image from the Red Hat repository:
+
+.podman pull command
+[source, bash]
+----
+podman pull registry.access.redhat.com/rhel7
+----
+
+
+An image is identified by a repository name (registry.access.redhat.com), a namespace name (rhel7) and the image name (rhel).  You could also add a tag (which defaults to :latest if not entered).  The repository name rhel.  If the container registry URL is not specified in the pull command, it could result in the retrieval of an image that originates from an untrusted registry.  There can be multiple versions of the same image.  A specific version can be selected by adding a tag, such as :latest to form a name such as rhel:latest or rhel7:7.5-231.
+
+Skopeo allows the ability to inspect containers stored in a registry.  Using the inspect option shows details of the selected container.  An enhancement over the the docker tool is the `skopeo inspect` command's ability to list all tags of the specified container.
+
+[source, bash]
+----
+skopeo inspect docker://registry.access.redhat.com/rhel7
+----
+
+
+Podman can be used to see what container images are in the local repository:
+
+[source, bash]
+----
+podman images
+----
+....
+REPOSITORY                         TAG      IMAGE ID       CREATED      SIZE
+registry.access.redhat.com/rhel7   latest   7a840db7f020   2 days ago   211MB
+....
+
+
+=== Inspecting the container tools environment
+Now that you have the Linux container tools installed, with a few containers available, you can start investigating what makes up a container.  Run `podman info` option to check the container environment details.
+
+
+.podman info command
+[source, bash]
+----
+podman info
+----
+....
+host:
+  MemFree: 1050951680
+  MemTotal: 1926369280
+  SwapFree: 0
+  SwapTotal: 0
+  arch: amd64
+  cpus: 1
+  hostname: ip-10-0-2-211.ec2.internal
+  kernel: 3.10.0-862.3.2.el7.x86_64
+  os: linux
+  uptime: 19h 36m 30.42s (Approximately 0.79 days)
+insecure registries:
+  registries: []
+registries:
+  registries:
+  - registry.access.redhat.com
+store:
+  ContainerStore:
+    number: 0
+  GraphDriverName: overlay
+  GraphOptions:
+  - overlay.override_kernel_check=true
+  GraphRoot: /var/lib/containers/storage
+  GraphStatus:
+    Backing Filesystem: xfs
+    Native Overlay Diff: "true"
+    Supports d_type: "true"
+  ImageStore:
+    number: 0
+  RunRoot: /var/run/containers/storage
+....
+
+{{< importPartial "footer/footer.html" >}}

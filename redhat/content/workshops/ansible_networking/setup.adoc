@@ -1,0 +1,67 @@
+---
+title: "Setup"
+workshops: ansible_networking
+workshop_weight: 1
+layout: lab
+---
+
+= Workshop Lab Setup
+
+== Workshop Lab Topology
+
+'''
+
+image::../images/network_diagram.png['Ansible for Networking - Network Topology']
+
+'''
+
+
+{{% alert success %}}
+== Initial Setup - Environment & Seat Selection
+On every page of this workshop at the bottom is a section titled **Workshop Details** that allows you to select your Student ID and Workshop Environment.
+Before proceeding, you must set these variables to match the configuration provided by your instructor.
+{{% /alert %}}
+
+
+== How to access the workshop
+
+Once you have your Environment & Seat configured, you can select one of the following methods to connect to the Ansible Control Node - the machine that we'll connect to and execute our Ansible automation upon the rest of the network it is a part of.
+
+There are two ways of access the control node:
+
+1. link:#connect-directly[Connect directly via an SSH Client]
+2. link:#connect-via-wetty[Connect with the provided in-browser terminal, Wetty]
+
+[#connect-directly]
+=== Connect directly via an SSH Client
+
+If you are using your own laptop, or are able to SSH via a Chrome extention such as the link:https://chrome.google.com/webstore/detail/secure-shell-app/pnhechapfaindjhompbnflcldabbghjo?hl=en[Secure Shell App] extension, then you can simply connect using your favorite SSH Client, such as link:https://www.putty.org/[Putty].
+
+ - **Hostname** - {{< urifqdn_an >}}
+ - **Username** - {{< student_seat "student" >}}
+ - **Password** - Instructor supplied
+ - **Connection Command** - ssh {{< student_seat "student" >}}@{{< urifqdn_an >}}
+
+[#connect-via-wetty]
+=== Connect with Wetty
+
+Use this URL to access the Wetty node, just change the workshop name (if applicable). Ask your instructor for the workshop name and domain.
+
+``` text
+{{< urifqdn_an "https://" ":8888" >}}
+```
+
+After logging in, you should see a shell.
+
+image::../images/wetty.png[caption="Figure 1: ", title='wetty', 500]
+
+
+[IMPORTANT]
+Be sure you can log in to your instances.  If you can't log in start shouting, loudly, and waving your hands!
+
+
+== End Result
+
+At this point, you should have logged into your node.  If you haven't, let us know so we can get you fixed up.
+
+{{< importPartial "footer/footer.html" >}}

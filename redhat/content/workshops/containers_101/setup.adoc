@@ -1,0 +1,48 @@
+---
+title: "Setup"
+workshops: containers_101
+workshop_weight: 10
+layout: lab
+---
+
+:badges:
+:icons: font
+:imagesdir: /workshops/containers_101/images
+:source-highlighter: highlight.js
+:source-language: yaml
+
+= Setup
+
+== Conventions Used in this Workshop
+
+When something written is a command that you should type, it is separated in a code block, like this:
+[source,bash]
+----
+echo "hello, world!"
+----
+And the output will be shown in a block, like this:
+....
+hello, world!
+....
+
+
+== Introduction to Wetty (Browser-based SSH)
+
+This lab provides a quick tour of the browser based SSH client Wetty. To help you get familiar with lab environment along with some key terminology we will use in subsequent lab content.
+
+
+== Accessing Wetty
+
+Use this URL to access the Wetty node, via your web browser.  Please use Chrome or Firefox, for best results.
+
+[source,bash]
+----
+{{< uri2partfqdn "https://" ":8888" "node." >}}
+----
+
+
+After logging in, you should see a shell.
+
+{{< figureImage src="/redhat/workshops/containers_101/images/wetty.png" title="wetty web terminal" >}}
+
+{{< importPartial "footer/footer.html" >}}
