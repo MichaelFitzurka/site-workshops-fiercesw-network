@@ -82,6 +82,7 @@ RUN cd /tmp && git clone https://github.com/FierceSoftware/site-workshops-fierce
 RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd redhat && \
     cd themes/fiercesw/static && npm install && cd ../../.. && \
+    cd themes/fiercesw-dark/static && npm install && cd ../../.. && \
     hugo && \
     cd public/node_modules/patternfly && npm install && cd ../../../ && \
     cp -R public/* /var/www/html/redhat/
