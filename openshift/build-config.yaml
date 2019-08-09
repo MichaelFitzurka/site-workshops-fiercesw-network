@@ -19,6 +19,7 @@ spec:
     type: Git
   strategy:
     dockerStrategy:
+      noCache: true
       from:
         kind: DockerImage
         name: 'node:8-alpine'
