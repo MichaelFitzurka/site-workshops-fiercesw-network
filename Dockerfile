@@ -4,7 +4,7 @@ FROM node:8-alpine
 RUN apk -U add wget tar gzip git asciidoctor
 
 # Install Hugo
-RUN wget -c https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.tar.gz -O - | tar -xz && mv hugo /usr/local/bin/hugo
+RUN cd /tmp && mkdir hugo-working && cd hugo-working && wget -c https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.tar.gz -O - | tar -xz && mv hugo /usr/local/bin/hugo && cd / && rm -rf /tmp/hugo-working
 
 # Install nginx
 RUN \
@@ -72,23 +72,24 @@ ADD conf/default-site /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
 #Build the Main Site Index
-RUN git clone https://github.com/FierceSoftware/site-workshops-fiercesw-network && \
+RUN cd /tmp && git clone https://github.com/FierceSoftware/site-workshops-fiercesw-network && \
     cd site-workshops-fiercesw-network && \
     cd main-index && \
     npm install --only=dev && npm install && npm start && \
-    cp -R * /var/www/html/    
+    cp -R * /var/www/html/
 
 #Build the Red Hat Workshops
-RUN cd site-workshops-fiercesw-network && \
+RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd redhat && \
     hugo && \
     cp -R public/* /var/www/html/redhat/
 
 #Build the Cloudera Workshops
-RUN cd site-workshops-fiercesw-network && \
+RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd cloudera && \
     hugo && \
-    cp -R public/* /var/www/html/cloudera/
+    cp -R public/* /var/www/html/cloudera/ && \
+    cd / && rm -rf /tmp/*
 
 #Serve it up
 #VOLUME ["/var/cache/nginx"]
