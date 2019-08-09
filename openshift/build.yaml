@@ -1,0 +1,27 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    name: workshops-fiercesw-network
+  name: workshops-fiercesw-network
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'fiercesw-workshops:latest'
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: 'https://github.com/FierceSoftware/site-workshops-fiercesw-network'
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: DockerImage
+        name: 'node:8-alpine'
+    type: Docker
+status:
+  lastVersion: 0
