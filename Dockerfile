@@ -66,7 +66,8 @@ RUN mkdir -p /etc/nginx/sites-available/ && \
     mkdir -p /etc/nginx/sites-enabled/ && \
     mkdir -p /etc/nginx/ssl/ && \
     rm -Rf /var/www/* && \
-    mkdir -p /var/www/html/{redhat,cloudera}
+    mkdir -p /var/www/html/cloudera && \
+    mkdir -p /var/www/html/redhat
 ADD conf/default-site /etc/nginx/sites-available/default.conf
 RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf
 
