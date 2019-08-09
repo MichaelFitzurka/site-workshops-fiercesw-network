@@ -1,5 +1,5 @@
-title = "Red Hat | Public Sector"
-baseURL = "http://redhatgov.io/"
+title = "Red Hat | Fierce Software Workshops"
+baseURL = "https://workshops.fiercesw.network/redhat/"
 theme = "redhatgov"
 languageCode = "en-us"
 metaDataFormat = "yaml"

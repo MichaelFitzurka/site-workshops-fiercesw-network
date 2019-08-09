@@ -87,12 +87,13 @@ RUN cd /tmp && cd site-workshops-fiercesw-network && \
 #Build the Cloudera Workshops
 RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd cloudera && \
+    cd themes/fiercesw-hwx/static && npm install && cd ../../.. && \
     hugo && \
     cp -R public/* /var/www/html/cloudera/ && \
     cd / && rm -rf /tmp/*
 
 #Serve it up
-#VOLUME ["/var/cache/nginx"]
+VOLUME ["/var/cache/nginx"]
 
 EXPOSE 8080
 

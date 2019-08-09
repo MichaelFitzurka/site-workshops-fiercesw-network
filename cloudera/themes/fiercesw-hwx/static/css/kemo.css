@@ -1,0 +1,144 @@
+body {
+  padding-top: 51px;
+}
+
+figure {
+  margin: 0 0 10px;
+}
+
+#footer {
+  margin-top: 50px;
+}
+.jumbotron-page {
+  position: relative;
+  overflow: hidden;
+}
+.jumbotron-page h1 {
+  color:#000;
+}
+#particles {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+#introoo {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  padding: 0 20px;
+  width: 100%;
+  text-align: center;
+}
+.particle_inside{
+	height: 225px !important;
+}
+
+.color-overlay:before{
+  position: absolute;
+  content:" ";
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  display: block;
+  z-index:0;
+  background: url("/cloudera/img/jumbotron-page-bg.png") center center repeat;
+  background: linear-gradient(to right,  rgba(41, 137, 0, 0.15), rgba(41, 137, 0, 0.75));
+}
+
+.navbar-brand {
+  padding: 5px 20px;
+}
+
+.navbar-no-margin {
+  margin-bottom: 0;
+}
+
+.jumbotron-home {
+  background: linear-gradient(to right,  #aee496 0%,#60ab3f 100%);
+  color: #ffffff;
+}
+
+.jumbotron-page {
+  background: url("/cloudera/img/jumbotron-page-bg.png") center center repeat;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+.btn {
+  -webkit-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+  -webkit-transition-property: background;
+  transition-property: background;
+  background: #4c4c4c;
+  border-color: #4c4c4c;
+  color:#fff;
+}
+.btn:hover, .btn:focus {
+    color: #fff;
+    background: #3f3f3f;
+    border-color: #3f3f3f;
+}
+.btn-primary {
+  background: #6bad52;
+  border-color: #6bad52;
+}
+.btn-primary:hover, .btn-primary:focus {
+  color: #fff;
+  background: #325226;
+  border-color: #325226;
+}
+
+a.navbar-brand img.img-responsive {
+  max-height:50px;
+  position: relative;
+  bottom: 4px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) {
+  #workshopFooterDetails {
+    margin-top:0;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) {
+  #workshopFooterDetails {
+    margin-top:4rem;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) {
+  #workshopFooterDetails {
+    margin-top:0;
+  }
+}
+
+.twoSidedStepHolder {
+margin:2rem 0;
+}
+.twoSidedStepHolder h2.stepTitle {
+padding-bottom:1rem;
+margin-bottom:2rem;
+border-bottom:1px solid;
+}
+figure.img-figure.kemo-figure {
+border: 5px solid white;
+    box-shadow: 0px 3px 7px 0px rgba(0,0,0,0.25);
+margin:1rem 0 2rem;
+}
+figure.img-figure.kemo-figure figcaption {
+    text-align: center;
+    margin: 0rem;
+    background: #FAFAFA;
+    padding: 1rem;
+    font-weight: bold;
+}
+.alert h3 {
+margin-top:0;
+}
