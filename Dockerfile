@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM node:8-alpine
 
 # Install base packages
 RUN apk -U add wget tar gzip git
@@ -74,7 +74,7 @@ RUN ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/defau
 RUN git clone https://github.com/FierceSoftware/site-workshops-fiercesw-network && \
     cd site-workshops-fiercesw-network && \
     cd main-index && \
-    npm install && npm start && \
+    npm install --only=dev && npm install && npm start && \
     cp -R * /var/www/html/    
 
 #Build the Red Hat Workshops
