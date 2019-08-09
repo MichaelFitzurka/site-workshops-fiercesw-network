@@ -21,13 +21,13 @@ RUN \
     --conf-path=/etc/nginx/nginx.conf \
     --error-log-path=/var/log/nginx/error.log \
     --http-log-path=/var/log/nginx/access.log \
-    --pid-path=/var/run/nginx.pid \
-    --lock-path=/var/run/nginx.lock \
-    --http-client-body-temp-path=/var/cache/nginx/client_temp \
-    --http-proxy-temp-path=/var/cache/nginx/proxy_temp \
-    --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp \
-    --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp \
-    --http-scgi-temp-path=/var/cache/nginx/scgi_temp \
+    --pid-path=/tmp/run/nginx.pid \
+    --lock-path=/tmp/run/nginx.lock \
+    --http-client-body-temp-path=/tmp/cache/nginx/client_temp \
+    --http-proxy-temp-path=/tmp/cache/nginx/proxy_temp \
+    --http-fastcgi-temp-path=/tmp/cache/nginx/fastcgi_temp \
+    --http-uwsgi-temp-path=/tmp/cache/nginx/uwsgi_temp \
+    --http-scgi-temp-path=/tmp/cache/nginx/scgi_temp \
     --user=nginx \
     --group=nginx \
     --with-http_ssl_module \
