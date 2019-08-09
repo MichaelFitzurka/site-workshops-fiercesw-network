@@ -105,6 +105,6 @@ RUN cd /tmp && cd site-workshops-fiercesw-network && \
 #Serve it up
 VOLUME ["/var/cache/nginx"]
 
-EXPOSE 80
+EXPOSE 8080
 
 CMD ["nginx"]
