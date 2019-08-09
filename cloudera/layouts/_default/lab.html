@@ -10,7 +10,7 @@
   <div class="row">
     <p class="text-center">
       {{ $mainLabPage := delimit (slice "/cloudera/workshops" .Params.workshops) "/" }}
-      <a href="{{ $mainLabPage | absURL }}">Return to Workshop</a>
+      <a href="{{ $mainLabPage | absURL }}/">Return to Workshop</a>
     </p>
 
     {{ partial "prev_next_links" .Page }}
@@ -21,7 +21,7 @@
 
     <p class="text-center">
       {{ $mainLabPage := delimit (slice "/cloudera/workshops" .Params.workshops) "/" }}
-      <a href="{{ $mainLabPage | absURL }}">Return to Workshop</a>
+      <a href="{{ $mainLabPage | absURL }}/">Return to Workshop</a>
     </p>
   </div>
 </div>
