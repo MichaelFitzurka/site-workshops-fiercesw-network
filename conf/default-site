@@ -26,27 +26,15 @@ server {
         }
 
 	location / {
-		# First attempt to serve request as file, then
-		# as directory, then fall back to index.html
-		try_files $uri $uri/ =404;
+	    # First attempt to serve request as file, then
+	    # as directory, then fall back to index.html
+	    try_files $uri $uri/ =404;
 	}
-	
-	# idiot proof...
-	location = /redhat {
-                #alias /var/www/html/redhat/;
-                #try_files $uri $uri/ =404;
-		return 302 /redhat/;
-        }
-        location = /cloudera {
-                #root /var/www/html/cloudera;
-                #try_files $uri $uri/ =404;
-		return 302 /cloudera/;
-        }
 
 	error_page 404 /404.html;
         location = /404.html {
-                root /var/www/errors;
-                internal;
+            root /var/www/errors;
+            internal;
         }
 
         location ^~ /sad.svg {
@@ -62,20 +50,20 @@ server {
             access_log off;
         }
 
-	      location ~* \.(jpg|jpeg|gif|png|css|js|ico|webp|tiff|ttf|svg)$ {
-                expires           5d;
+	location ~* \.(jpg|jpeg|gif|png|css|js|ico|webp|tiff|ttf|svg)$ {
+            expires           5d;
         }
 
 	# deny access to . files, for security
 	#
 	location ~ /\. {
-    		log_not_found off; 
-    		deny all;
+    	    log_not_found off; 
+    	    deny all;
 	}
         
 	location ^~ /.well-known {
-                allow all;
-                auth_basic off;
+            allow all;
+            auth_basic off;
         }
 
 }
