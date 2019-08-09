@@ -4,7 +4,7 @@ FROM node:8-alpine
 RUN apk -U add wget tar gzip git asciidoctor
 
 # Install Hugo
-RUN cd /tmp && mkdir hugo-working && cd hugo-working && wget -c https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.tar.gz -O - | tar -xz && mv hugo /usr/local/bin/hugo && cd / && rm -rf /tmp/hugo-working
+RUN cd /tmp && mkdir hugo-working && cd hugo-working && wget -c https://github.com/gohugoio/hugo/releases/download/v0.41/hugo_0.41_Linux-64bit.tar.gz -O - | tar -xz && mv hugo /usr/local/bin/hugo && cd / && rm -rf /tmp/hugo-working
 
 # Install nginx
 RUN \
