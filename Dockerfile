@@ -58,7 +58,13 @@ RUN \
   adduser -D nginx && \
   rm -rf /tmp/* && \
   apk del ${build_pkgs} && \
-  rm -rf /var/cache/apk/*
+  rm -rf /var/cache/apk/* && \
+  mkdir -p /tmp/cache/nginx/scgi_temp && \
+  mkdir -p /tmp/cache/nginx/uwsgi_temp && \
+  mkdir -p /tmp/cache/nginx/fastcgi_temp && \
+  mkdir -p /tmp/cache/nginx/proxy_temp && \
+  mkdir -p /tmp/cache/nginx/client_temp && \
+  mkdir -p /tmp/run
 
 COPY conf/nginx.conf /etc/nginx/nginx.conf
 
