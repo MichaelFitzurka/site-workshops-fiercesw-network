@@ -81,7 +81,9 @@ RUN cd /tmp && git clone https://github.com/FierceSoftware/site-workshops-fierce
 #Build the Red Hat Workshops
 RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd redhat && \
+    cd themes/fiercesw/static && npm install && cd ../../.. && \
     hugo && \
+    cd public/node_modules/patternfly && npm install && cd ../../../ && \
     cp -R public/* /var/www/html/redhat/
 
 #Build the Cloudera Workshops
@@ -89,6 +91,7 @@ RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd cloudera && \
     cd themes/fiercesw-hwx/static && npm install && cd ../../.. && \
     hugo && \
+    cd public/node_modules/patternfly && npm install && cd ../../../ && \
     cp -R public/* /var/www/html/cloudera/ && \
     cd / && rm -rf /tmp/*
 
