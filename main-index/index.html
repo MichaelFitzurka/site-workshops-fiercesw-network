@@ -137,7 +137,8 @@
 		$("div.jumbotron").stop().addClass('headerAnimate');
     });
 
-      jQuery(".card-pf").on('click', function() {
+      jQuery(".card-pf").on('click', function(e) {
+	e.preventDefault();
         var href = jQuery(this).find('a').attr('href');
         var win = window.open(href, '_blank');
         if (win) {
