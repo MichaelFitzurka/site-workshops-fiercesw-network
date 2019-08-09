@@ -1,6 +1,6 @@
 title = "Red Hat | Fierce Software Workshops"
 baseURL = "https://workshops.fiercesw.network/redhat/"
-theme = "redhatgov"
+theme = "fiercesw"
 languageCode = "en-us"
 metaDataFormat = "yaml"
 
