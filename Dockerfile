@@ -84,7 +84,7 @@ RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd themes/fiercesw/static && npm install && cd ../../.. && \
     cd themes/fiercesw-dark/static && npm install && cd ../../.. && \
     hugo && \
-    cd public/node_modules/patternfly && npm install && cd ../../../ && \
+    cd public/node_modules/patternfly && npm install && npm install datatables.net && npm install datatables.net-bs && cd ../../../ && \
     cp -R public/* /var/www/html/redhat/
 
 #Build the Cloudera Workshops
@@ -92,7 +92,7 @@ RUN cd /tmp && cd site-workshops-fiercesw-network && \
     cd cloudera && \
     cd themes/fiercesw-hwx/static && npm install && cd ../../.. && \
     hugo && \
-    cd public/node_modules/patternfly && npm install && cd ../../../ && \
+    cd public/node_modules/patternfly && npm install && npm install datatables.net && npm install datatables.net-bs && cd ../../../ && \
     cp -R public/* /var/www/html/cloudera/ && \
     cd / && rm -rf /tmp/*
 
