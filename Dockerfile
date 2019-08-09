@@ -100,7 +100,7 @@ RUN cd /tmp && cd site-workshops-fiercesw-network && \
     hugo && \
     cd public/node_modules/patternfly && npm install && npm install datatables.net && npm install datatables.net-bs && cd ../../../ && \
     cp -R public/* /var/www/html/cloudera/ && \
-    cd / && rm -rf /tmp/*
+    cd / && rm -rf /tmp/site-workshops-fiercesw-network
 
 #Serve it up
 VOLUME ["/var/cache/nginx"]
