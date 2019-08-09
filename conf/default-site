@@ -33,14 +33,14 @@ server {
 	
 	# idiot proof...
 	location /redhat {
-                #alias /var/www/html/redhat/;
-                #try_files $uri $uri/ =404;
-		return 302 /redhat/;
+                root /var/www/html/redhat;
+                try_files $uri $uri/ =404;
+		#return 302 /redhat/;
         }
         location /cloudera {
-                #alias /var/www/html/cloudera/;
-                #try_files $uri $uri/ =404;
-		return 302 /cloudera/;
+                root /var/www/html/cloudera;
+                try_files $uri $uri/ =404;
+		#return 302 /cloudera/;
         }
 
 	error_page 404 /404.html;
