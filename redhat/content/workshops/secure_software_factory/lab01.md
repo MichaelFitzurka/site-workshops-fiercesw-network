@@ -30,7 +30,7 @@ OpenShift provides a web console that allows you to perform various tasks via a 
 Use your browser to navigate to the URI provided by your instructor and login with the user/password provided.
 
 ```bash
-https://ga-cali-ish.fiercesw.network/
+https://rhocp.fiercesw.network/
 ```
 
 <img src="../images/ocp-login.png" width="600"><br/>
@@ -42,9 +42,9 @@ Once logged in you should see your available projects - or a button to create a 
 Open a terminal and login using the same URI with following command:
 
 ```
-$ oc login https://devsecops-master.fiercesw.io/ --insecure-skip-tls-verify=true
-Authentication required for https://devsecops-master.fiercesw.io/ "master" ":8443" >}} (openshift)
- Username: student#
+$ oc login https://rhocp.fiercesw.network/
+Authentication required for https://rhocp.fiercesw.network/ (openshift)
+ Username: <student_user_name>
  Password:
 Login successful.
 ```
