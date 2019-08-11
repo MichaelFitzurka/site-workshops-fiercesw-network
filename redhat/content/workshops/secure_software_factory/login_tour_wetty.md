@@ -15,12 +15,12 @@ This lab provides a quick tour of the browser based SSH client Wetty. To help yo
 Use this URL to access the Wetty node, just change the workshopname. Ask your instructor for the workshopname.
 
 ```bash
-https://bastion.fiercesw.network
+https://bastion.rhocp.fiercesw.network:8888
 ```
 
 ### Login Info
 ```bash
-login:    student{{< span "userid" "YOUR#" >}}
+login:    <Instructor Provided>
 Password: <Instructor Provided>
 ```
 
