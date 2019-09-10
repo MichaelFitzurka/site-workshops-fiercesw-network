@@ -220,7 +220,7 @@ buildconfig "pipeline" created
 
 > Use the following OpenShift build configuration to create the pipeline.
 
-``` text
+```bash
 kind: "BuildConfig"
 apiVersion: "v1"
 metadata:

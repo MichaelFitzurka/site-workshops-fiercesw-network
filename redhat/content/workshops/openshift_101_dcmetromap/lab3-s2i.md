@@ -49,14 +49,23 @@ Select Node.js
 <img src="../images/ocp-lab-s2i-filternode2.png" width="800"><br/>
 
 <blockquote>
-Select 'Next>'.  Then select 'advanced options'
+Select 'Next>', then select version '6'
+</blockquote>
+
+<img src="../images/ocp-lab-s2i-nodejs-6.png" width="700"><br/>
+
+<blockquote>
+Select 'advanced options'
 </blockquote>
 
 <img src="../images/ocp-lab-s2i-nodejs.png" width="700"><br/>
 
-<strong>Name:</strong> dc-metro-map<br/>
-<strong>GitHub repository URL</strong>: https://github.com/RedHatGov/openshift-workshops.git<br/>
-<strong>GitHub context-dir</strong>: /dc-metro-map<br/>
+<p>
+<table>
+<tr><td><b>Name</b></td><td>dc-metro-map</td></tr>
+<tr><td><b>Git Repository URL</b></td><td><a href>https://github.com/RedHatGov/openshift-workshops.git</a></td></tr>
+<tr><td><b>Context Dir</b></td><td>/dc-metro-map</td></tr>
+</table>
 </p>
 
 <blockquote>

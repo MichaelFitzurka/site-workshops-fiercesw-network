@@ -38,13 +38,15 @@ Click the "Add to Project" button
 Select the "Browse Catalog" tab and search for the nodejs builder image. Click Next>
 </blockquote>
 <blockquote>
-Click 'advanced options' and fill out the boxes to point to the fork and context dir. 
+Select version <b>[6]</b> then click <b><u>advanced options</u></b> and fill out the boxes to point to the fork and context dir. Note that <b>YOUR_ACCOUNT</b> is the name of your GitHub account.
 </blockquote>
 
 <p>
-<strong>Name:</strong> dc-metro-map<br />
-<strong>GitHub repository URL:</strong> https://github.com/YOUR_ACCOUNT/openshift-workshops.git<br/>
-<strong>GitHub context-dir:</strong> /dc-metro-map<br/>
+<table>
+<tr><td><b>Name</b></td><td>dc-metro-map</td></tr>
+<tr><td><b>Git Repository URL</b></td><td>https://github.com/<b>YOUR_ACCOUNT</b>/openshift-workshops.git</td></tr>
+<tr><td><b>Context Dir</b></td><td>/dc-metro-map</td></tr>
+</table>
 </p>
 
 <blockquote>
@@ -88,7 +90,7 @@ You will see the summary of builds using this build config
 <img src="../images/ocp-lab-rollbacks-buildconfigsummary.png" width="900"><br/>
 
 <blockquote>
-Click the "Configuration" tab (next to the active Summary tab)
+Click the "Configuration" tab 
 </blockquote>
 <img src="../images/ocp-lab-rollbacks-deployconfigconfig.png" width="900"><br/>
 Now you can see the various configuration details including the Github specific and Generic webhook URLs.
@@ -118,7 +120,7 @@ Click the "Settings" tab
 Now you will see a vertical list of settings groups.<br/><br/>
 
 <blockquote>
-Click the "Webhooks & services" item
+Click the "Webhooks" link
 </blockquote>
 <img src="../images/ocp-lab-rollbacks-githubwebhooks.png" width="900"><br/>
 
@@ -128,8 +130,15 @@ Click the "Add webhook" button
 <blockquote>
 Paste in the URL you copied
 </blockquote>
+<blockquote>
+Disable SSL verification by clicking the button
+</blockquote>
 
-<img src="../images/github_webhook.jpg" class="img-responsive" /><br/>
+<blockquote>
+<i class="fa fa-info-circle"></i> You can learn how to setup SSL in the secrets lab<br/><br/>
+</blockquote>
+
+<img src="../images/ocp-lab-rollbacks-githubwebhooks-add.png" width="600"><br/>
 
 <blockquote>
 Click the "Add webhook" button
@@ -217,6 +226,6 @@ In this lab we saw how you can configure a source code repository to trigger bui
 [2]: https://docs.openshift.com/enterprise/3.1/dev_guide/deployments.html#triggers
 [3]: https://github.com/join?source=header-home
 [4]: https://github.com/RedHatGov/openshift-workshops.git
-[5]: https://docs.openshift.com/enterprise/latest/rest_api/openshift_v1.html#create-a-deploymentconfigrollback-2
+[5]: https://docs.openshift.com/enterprise/3.1/rest_api/openshift_v1.html#create-a-deploymentconfigrollback-2
 
 {{< importPartial "footer/footer.html" >}}

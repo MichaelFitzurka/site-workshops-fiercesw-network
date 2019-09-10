@@ -12,22 +12,21 @@ This lab provides a quick tour of the browser based SSH client Wetty. To help yo
 
 # Accessing Wetty
 
-Use this URL to access the Wetty node, just ensure you've changed the workshop name, domain, and selected your seat number from the footer "Workshop Details" section. Ask your instructor for the configuration details. 
+Use this URL to access the Wetty node, just change the workshopname. Ask your instructor for the workshopname. 
 
-``` text
-https://bastion.fiercesw.network
+```bash
+{{< urishortfqdn "https://" "master" ":8888" >}}
 ```
 
 ### Login Info
-
-``` text
-login:    student{{< span "userid" "YOUR#" >}}
+```bash
+login:    user{{< span "userid" "YOUR#" >}}
 Password: <Instructor Provided>
 ```
 
 After logging in, you should see a shell.
 
-<img src="../images/wetty.png" class="img-responsive" />
+<img src="../images/wetty.png" width="1000" />
 
 The wetty instance will already have the 'oc' command installed on them. The 'oc' command is used to connect to the OpenShift Master. 
 

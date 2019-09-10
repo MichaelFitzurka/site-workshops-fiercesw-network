@@ -102,7 +102,7 @@ Here are the details of the image stream for this deployment.<br/>
 <img src="../images/ocp-lab-devman-isDetails.png" width="900"><br/>
 
 <blockquote>
-Click "Builds" and then Builds to get back to the build summary
+Click "Builds" and then "Builds" to get back to the build summary
 </blockquote>
 
 <blockquote>
@@ -200,8 +200,6 @@ Let's have a little fun.  The app has some easter eggs that get triggered when c
 ```bash
 $ oc set env dc/dc-metro-map -e BEERME=true
 ```
-
-Next, watch the modified deployment configuration kick off a new build.
 
 ```bash
 $ oc get pods -w
