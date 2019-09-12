@@ -30,7 +30,7 @@ OpenShift provides a web console that allows you to perform various tasks via a 
 > Use your browser to navigate to the URI provided by your instructor and login with the user/password provided.
 
 ```bash
-{{< urishortfqdn "https://" "master" ":8443" >}}
+{{< uriultrashortfqdn "https://" >}}
 ```
 
 <img src="../images/ocp-login.png" width="600"><br/>
@@ -55,9 +55,9 @@ Don't worry, it's supposed to look empty right now because you currently don't h
 > <i class="fa fa-terminal"></i> Open a terminal and login using the same URI with following command:
 
 ```bash
-$ oc login {{< urishortfqdn "https://" "master" ":8443" >}} --insecure-skip-tls-verify=true
-Authentication required for {{< urishortfqdn "https://" "master" ":8443" >}} (openshift)
- Username: user{{< span "userid" "YOUR#" >}} Password: 
+$ oc login {{< uriultrashortfqdn "https://" >}}
+Authentication required for {{< uriultrashortfqdn "https://" >}} (openshift)
+ Username: student-user{{< span "userid" "YOUR#" >}} Password: 
 Login successful.
 ```
 
