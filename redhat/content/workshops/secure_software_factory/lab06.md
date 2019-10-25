@@ -104,5 +104,7 @@ Maven install will run through the [Maven lifecycle][2] and skip the tests.  We 
 - install - install the package into the local repository, for use as a dependency in other projects locally
 - deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
 
+NOTE: Throughout the course of these labs, you will build your application many times.  In order to shorten the build times of your pods, we will cache all Maven dependencies in a local Nexus Repository Manager pod.  We will discuss Nexus in more detail during the archiving step later in the pipeline.
+
 [1]: https://jenkins.io/doc/pipeline/steps/git/
 [2]: https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
