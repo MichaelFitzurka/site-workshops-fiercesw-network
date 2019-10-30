@@ -1,103 +1,260 @@
 ---
-title: Lab 17 - Trigger the Software Supply Chain
+title: Lab 17 - Run Pipeline
 workshops: secure_software_factory
-workshop_weight: 27
+workshop_weight: 26
 layout: lab
 ---
+# Verify Completed Pipeline
 
-# Trigger the Trusted Software Supply Chain with Code Check-ins
+Before we kick off your pipeline, let's verify it.  
 
-Through automation, you will trigger the Trusted Software Supply Chain with code check-ins.
+In Builds > Pipelines > tasks-pipeline > Actions > Edit YAML
+
+<img src="../images/pipeline_actions_edityaml.png" width="900" />
+
+Take a look and see if it matches the below text.  If not, please correct it.
+
+```
+apiVersion: v1
+kind: BuildConfig
+metadata:
+    annotations:
+      pipeline.alpha.openshift.io/uses: '[{"name": "jenkins", "namespace": "", "kind": "DeploymentConfig"}]'
+    labels:
+      app: cicd-pipeline
+      name: cicd-pipeline
+    name: tasks-pipeline
+spec:
+    triggers:
+      - type: GitHub
+        github:
+          secret: "secret101"
+      - type: Generic
+        generic:
+          secret: "secret101"
+    runPolicy: Serial
+    source:
+      type: None
+    strategy:
+      jenkinsPipelineStrategy:
+        env:
+        - name: DEV_PROJECT
+          value: dev-user1
+        - name: STAGE_PROJECT
+          value: stage-user1
+        jenkinsfile: |-
+          def version, mvnCmd = "mvn -s configuration/cicd-settings-nexus3.xml"
+
+          pipeline {
+            agent {
+              label 'maven'
+            }
+            stages {
+              stage('Initialize') {
+                steps {
+                  echo "Pipeline started"
+                  rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline started** ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+                }
+              }
+              stage('Build App') {
+                steps {
+                  git branch: 'eap-7', url: 'http://gogs:3000/gogs/openshift-tasks.git'
+                  script {
+                    def pom = readMavenPom file: 'pom.xml'
+                    version = pom.version
+                  }
+                  sh "${mvnCmd} install -DskipTests=true"
+                }
+              }
+              stage('Test') {
+                steps {
+                  sh "${mvnCmd} test"
+                  step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+                }
+              }
+              stage('Code Analysis') {
+                steps {
+                  script {
+                    sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
+                  }
+                }
+              }
+              stage('Archive App') {
+                steps {
+                  sh "${mvnCmd} deploy -DskipTests=true -P nexus3"
+                }
+              }
+              stage('Create Image Builder') {
+                when {
+                  expression {
+                    openshift.withCluster() {
+                      openshift.withProject(env.DEV_PROJECT) {
+                        return !openshift.selector("bc", "tasks").exists();
+                      }
+                    }
+                  }
+                }
+                steps {
+                  script {
+                    openshift.withCluster() {
+                      openshift.withProject(env.DEV_PROJECT) {
+                        openshift.newBuild("--name=tasks", "--image-stream=jboss-eap70-openshift:1.5", "--binary=true")
+                      }
+                    }
+                  }
+                }
+              }
+              stage('Build Image') {
+                steps {
+                  sh "rm -rf oc-build && mkdir -p oc-build/deployments"
+                  sh "cp target/openshift-tasks.war oc-build/deployments/ROOT.war"
+
+                  script {
+                    openshift.withCluster() {
+                      openshift.withProject(env.DEV_PROJECT) {
+                        openshift.selector("bc", "tasks").startBuild("--from-dir=oc-build", "--wait=true")
+                      }
+                    }
+                  }
+                }
+              }
+              stage('Create DEV') {
+                when {
+                  expression {
+                    openshift.withCluster() {
+                      openshift.withProject(env.DEV_PROJECT) {
+                        return !openshift.selector('dc', 'tasks').exists()
+                      }
+                    }
+                  }
+                }
+                steps {
+                  script {
+                    openshift.withCluster() {
+                      openshift.withProject(env.DEV_PROJECT) {
+                        def app = openshift.newApp("tasks:latest")
+                        app.narrow("svc").expose();
+
+                        def dc = openshift.selector("dc", "tasks")
+                        while (dc.object().spec.replicas != dc.object().status.availableReplicas) {
+                            sleep 10
+                        }
+                        openshift.set("triggers", "dc/tasks", "--manual")
+                      }
+                    }
+                  }
+                }
+              }
+              stage('Deploy DEV') {
+                steps {
+                  script {
+                    openshift.withCluster() {
+                      openshift.withProject(env.DEV_PROJECT) {
+                        openshift.selector("dc", "tasks").rollout().latest();
+                      }
+                    }
+                  }
+                }
+              }
+              stage('Promote to STAGE?') {
+                steps {
+                  timeout(time:15, unit:'MINUTES') {
+                      input message: "Promote to STAGE?", ok: "Promote"
+                  }
+
+                  script {
+                    openshift.withCluster() {
+                      openshift.tag("${env.DEV_PROJECT}/tasks:latest", "${env.STAGE_PROJECT}/tasks:${version}")
+                    }
+                  }
+                }
+              }
+              stage('Deploy STAGE') {
+                steps {
+                  script {
+                    openshift.withCluster() {
+                      openshift.withProject(env.STAGE_PROJECT) {
+                        if (openshift.selector('dc', 'tasks').exists()) {
+                          openshift.selector('dc', 'tasks').delete()
+                          openshift.selector('svc', 'tasks').delete()
+                          openshift.selector('route', 'tasks').delete()
+                        }
+
+                        openshift.newApp("tasks:${version}").narrow("svc").expose()
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            post {
+              success {
+                rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline success** :100: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+              }
+              unstable {
+                rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline unstable** :confused: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", avatar: 'https://jenkins.io/images/logos/fire/fire.png'
+              }
+              failure {
+                rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline failure** :sob: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", avatar: 'https://jenkins.io/images/logos/fire/fire.png'
+              }
+              always {
+                echo "Pipeline finished"
+              }
+            }
+          }
+      type: JenkinsPipeline
+```
 
 <br>
-# Verify Webhook in Gogs
+# Verify your user Dev and Stage projects
 
-The Webhook is what triggers your pipeline upon code check-ins.  You want your SCM to trigger the pipeline as opposed to Jenkins constantly polling the source code for changes.
+In your pipeline text file, make sure \<user\> reflects your user # and project.
 
-Click on the Gogs route url in the CI/CD project which takes you to the home page.  Sign in using the credentials given to you by your Instructor.
-
-Go to the openshift-tasks repository.
-
-Select Settings.
-
-Select Webhooks
-
-Verify the Webhook.  Make sure the url includes the name 'tasks-pipeline' of the your imported pipeline.
-
-<img src="../images/gogs-webhook.png" width="900"><br/>
-
-This should match the webhook of the pipeline you previously created except the domain will be openshift.default.svc.cluster.local because the gogs pod calls the internal dns to resolve the address.
-
-The webhook url is located in builds > pipeline > tasks-pipeline > configuration > generic webhook url
+```
+- name: DEV_PROJECT
+  value: dev-<user>
+- name: STAGE_PROJECT
+  value: stage-<user>
+```
 
 <br>
-# Using Eclipse Che for Editing Code
+# Import pipeline into OpenShift (if not created already)
 
-Click on Eclipse Che route url in the CI/CD project which takes you to the workspace administration page. Select the Java stack and click on the Create button to create a workspace for yourself.
+If you created your pipeline in a text editor, you can import your text file in OpenShift.
 
-<img src="../images/che-create-workspace.png" width="900"><br/>
+At the top right select Add to Project > Import YAML / JSON
 
-You may need to start the workspace.  Click Start.
-
-<img src="../images/eclipse_che_workspace_start.png" width="900"><br/>
-
-It might take a little while before your workspace is set up and ready to be used in your browser. Once it's ready, click on Import Project... in order to import the openshift-tasks Gogs repository into your workspace.
-
-<img src="../images/che-import-project.png" width="900"><br/>
-
-Enter the Gogs repository http url for openshift-tasks as the Git repository url with Git username and password in the url.
-
-See the url below as an example.  Replace [gogs-hostname] with your gogs server.
-http://gogs:gogs@[gogs-hostname]/gogs/openshift-tasks.git
-
-So it should look something like this:
-http://gogs:gogs@gogs-cicd-user2.192.168.42.136.nip.io/gogs/openshift-tasks.git
-
-You can find the repository url in Gogs web console. Make sure the check the Branch field and enter eap-7 in order to clone the eap-7 branch which is used in this demo.
-
-Click on Import
-
-<img src="../images/che-import-git2.png" width="900"><br/>
-
-Change the project configuration to Maven and then click Save
+<img src="../images/import_yaml_json.png" width="500"><br/>
 
 
-<img src="../images/che-import-maven.png" width="900"><br/>
+Copy and Paste your pipeline from your text editor to your
 
-Configure you name and email to be stamped on your Git commity by going to Profile > Preferences > Git > Committer.  Click Save and Close the Window once Saved.
+Click Create and Close
 
-<img src="../images/che-configure-git-name2.png" width="900"><br/>
+<img src="../images/import_pipeline.png" width="900"><br/>
 
 <br>
-# Edit Code in your Workspace
+# Run Pipeline
 
-Remove the @Ignore annotation from src/test/java/org/jboss/as/quickstarts/tasksrs/service/UserResourceTest.java test methods to enable the unit tests.
+Go to Builds > Pipeline
 
-<img src="../images/remove_ignore.png" width="900"><br/>
+Click Start Pipeline for the pipeline you just created called tasks-pipeline.
 
-Commit and push to the git repo.
+Your pipeline should now execute through all the stages you created.  
 
-<img src="../images/che_commit_push_git.png" width="900"><br/>
+Go ahead and click View Log.  This will take you to the Jenkins logs and you can follow the various stages in your pipeline.
 
-<img src="../images/che-commit_push.png" width="900"><br/>
-
-Check out Jenkins, a pipeline instance is created and is being executed. The pipeline will fail during unit tests due to the enabled unit test.
-
-<img src="../images/pipeline_failed_unittest.png" width="900"><br/>
-
-Fix the test by modifying src/main/java/org/jboss/as/quickstarts/tasksrs/service/UserResource.java and uncommenting the sort function in getUsers method.
-
-You can use CTRL+/ to uncomment multiple lines
-
-<img src="../images/che-user_resource_fix.png" width="900"><br/>
-
-
-Click on Git > Commit to commit the changes to the openshift-tasks git repository. Make sure Push commited changes to: origin/eap7 is checked. Click on Commit button.
-
-<img src="../images/che-commit.png" width="900"><br/>
-
-As soon the changes are committed to the git repository, a new instances of pipeline gets triggers to test and deploy the code changes.
-
-Go Back to OpenShift and Promote to Stage to finish your Pipeline Run
+When it asks to promote to stage, go ahead and promote it.
 
 <img src="../images/pipeline_execution.png" width="900"><br/>
+
+<br>
+# Explore Pipeline Run
+- Explore the snapshots repository in Nexus and verify tasks is pushed to the repository
+- Explore SonarQube and show the metrics, stats, code coverage, etc
+- Explore Tasks - Dev project in OpenShift console and verify the application is deployed in the DEV environment
+- Explore Tasks - Stage project in OpenShift console and verify the application is deployed in the STAGE environment
+
+Sonarqube metrics, stats, and code coverage can be seen such as this screenshot below.
+
+<img src="../images/sonarqube-analysis.png" width="900"><br/>

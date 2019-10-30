@@ -1,5 +1,5 @@
 ---
-title:  Lab 06 - Build App Stage
+title: Lab 06 - Build App Stage
 workshops: secure_software_factory
 workshop_weight: 16
 layout: lab
@@ -31,12 +31,12 @@ Append the text below to the bottom of the Jenkins Pipeline Configuration.  Plea
       steps {
         git branch: 'eap-7', url: 'http://gogs:3000/gogs/openshift-tasks.git'
         script {
-            def pom = readMavenPom file: 'pom.xml'
-            version = pom.version
-          }
-          sh "${mvnCmd} install -DskipTests=true"
+          def pom = readMavenPom file: 'pom.xml'
+          version = pom.version
         }
+        sh "${mvnCmd} install -DskipTests=true"
       }
+    }
 ```
 
 Your Jenkinsfile should look like this.

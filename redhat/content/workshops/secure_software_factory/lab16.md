@@ -1,240 +1,77 @@
 ---
-title: Lab 16 - Run Pipeline
+title: Lab 16 - ChatOps and Conversation-Driven DevOps
 workshops: secure_software_factory
-workshop_weight: 26
+workshop_weight: 25
 layout: lab
 ---
-# Verify Completed Pipeline
+# ChatOps and Conversation-Driven DevOps
 
-Before we kick off your pipeline, let's verify it.  
+Chat rooms are not a new concept, dating back to the early days of the internet with dial-up Bulletin Board Services (BBS).  Technology has advanced greatly, but the idea of collaborating and communicating around topics
+with a recorded, searchable and time-stamped log of the conversation is as helpful today as it was then.
 
-In Builds > Pipelines > tasks-pipeline > Actions > Edit YAML
+Conceptually ChatOps, or conversation-driven DevOps united with automated tools, is likewise not new.  Direct support calls are faster than trading emails.  And when disasters strike, a "war room" is typically established to remove any impediments to communication.  Advancements in technology and automation, combined with the enhanced need for continuous collaboration in DevOps, has pushed IT teams from email to chat to ChatOps.
 
-<img src="../images/pipeline_actions_edityaml.png" width="900" />
-
-Take a look and see if it matches the below text.  If not, please correct it.
-
-```
-apiVersion: v1
-kind: BuildConfig
-metadata:
-    annotations:
-      pipeline.alpha.openshift.io/uses: '[{"name": "jenkins", "namespace": "", "kind": "DeploymentConfig"}]'
-    labels:
-      app: cicd-pipeline
-      name: cicd-pipeline
-    name: tasks-pipeline
-spec:
-    triggers:
-      - type: GitHub
-        github:
-          secret: "secret101"
-      - type: Generic
-        generic:
-          secret: "secret101"
-    runPolicy: Serial
-    source:
-      type: None
-    strategy:
-      jenkinsPipelineStrategy:
-        env:
-        - name: DEV_PROJECT
-          value: dev-user1
-        - name: STAGE_PROJECT
-          value: stage-user1
-        jenkinsfile: |-
-          def version, mvnCmd = "mvn -s configuration/cicd-settings-nexus3.xml"
-
-          pipeline {
-            agent {
-              label 'maven'
-            }
-            stages {
-              stage('Build App') {
-                steps {
-                  git branch: 'eap-7', url: 'http://gogs:3000/gogs/openshift-tasks.git'
-                  script {
-                      def pom = readMavenPom file: 'pom.xml'
-                      version = pom.version
-                  }
-                  sh "${mvnCmd} install -DskipTests=true"
-                }
-              }
-              stage('Test') {
-                steps {
-                  sh "${mvnCmd} test"
-                  step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-                }
-              }
-              stage('Code Analysis') {
-                steps {
-                  script {
-                    sh "${mvnCmd} sonar:sonar -Dsonar.host.url=http://sonarqube:9000 -DskipTests=true"
-                  }
-                }
-              }
-              stage('Archive App') {
-                steps {
-                  sh "${mvnCmd} deploy -DskipTests=true -P nexus3"
-                }
-              }
-              stage('Create Image Builder') {
-                when {
-                  expression {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
-                        return !openshift.selector("bc", "tasks").exists();
-                      }
-                    }
-                  }
-                }
-                steps {
-                  script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
-                        openshift.newBuild("--name=tasks", "--image-stream=jboss-eap70-openshift:1.5", "--binary=true")
-                      }
-                    }
-                  }
-                }
-              }
-              stage('Build Image') {
-                steps {
-                  sh "rm -rf oc-build && mkdir -p oc-build/deployments"
-                  sh "cp target/openshift-tasks.war oc-build/deployments/ROOT.war"
-
-                  script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
-                        openshift.selector("bc", "tasks").startBuild("--from-dir=oc-build", "--wait=true")
-                      }
-                    }
-                  }
-                }
-              }
-              stage('Create DEV') {
-                when {
-                  expression {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
-                        return !openshift.selector('dc', 'tasks').exists()
-                      }
-                    }
-                  }
-                }
-                steps {
-                  script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
-                        def app = openshift.newApp("tasks:latest")
-                        app.narrow("svc").expose();
-
-                        def dc = openshift.selector("dc", "tasks")
-                        while (dc.object().spec.replicas != dc.object().status.availableReplicas) {
-                            sleep 10
-                        }
-                        openshift.set("triggers", "dc/tasks", "--manual")
-                      }
-                    }
-                  }
-                }
-              }
-              stage('Deploy DEV') {
-                steps {
-                  script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.DEV_PROJECT) {
-                        openshift.selector("dc", "tasks").rollout().latest();
-                      }
-                    }
-                  }
-                }
-              }
-              stage('Promote to STAGE?') {
-                steps {
-                  timeout(time:15, unit:'MINUTES') {
-                      input message: "Promote to STAGE?", ok: "Promote"
-                  }
-
-                  script {
-                    openshift.withCluster() {
-                      openshift.tag("${env.DEV_PROJECT}/tasks:latest", "${env.STAGE_PROJECT}/tasks:${version}")
-                    }
-                  }
-                }
-              }
-              stage('Deploy STAGE') {
-                steps {
-                  script {
-                    openshift.withCluster() {
-                      openshift.withProject(env.STAGE_PROJECT) {
-                        if (openshift.selector('dc', 'tasks').exists()) {
-                          openshift.selector('dc', 'tasks').delete()
-                          openshift.selector('svc', 'tasks').delete()
-                          openshift.selector('route', 'tasks').delete()
-                        }
-
-                        openshift.newApp("tasks:${version}").narrow("svc").expose()
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-      type: JenkinsPipeline
-```
+Chat rooms become ChatOps with the addition of automated programs, called ChatBots or just simply bots, which integrate the commands and output of external tools into the communication stream.  In our pipeline, we will have a Jenkins bot announce to our chat room every time a pipeline has begun, as well as the status when it completes.  ChatOps can go much deeper with Robot Process Automation (RPA) listening to logs and acting accordingly, failing builds could be sent to ServiceNOW, and system-wide status reports could be triggered via a chat post with fully documented and time-stamped results.  Bots can even send commands to other bots inside the chat room, so that the automated workflow is completely transparent and readily understandable to all participants, human and non-human alike.  The integration of automated tools has pushed many teams from treating ChatOps as an amusing development tool into regarding it as a vital production support system.
 
 <br>
-# Verify your user Dev and Stage projects
+# Append to Jenkins Pipeline Configuration
 
-In your pipeline text file, make sure \<user\> reflects your user # and project.
+In Builds > Pipelines > tasks-pipeline > Actions > Edit
+
+<img src="../images/pipeline_actions_edit.png" width="900" />
+
+Insert the text below at line 7 in the Jenkins Pipeline Configuration, just after the line "stages {".  Please make sure to append to the beginning of the next line.  
+
 
 ```
-- name: DEV_PROJECT
-  value: dev-<user>
-- name: STAGE_PROJECT
-  value: stage-<user>
+    stage('Initialize') {
+      steps {
+        echo "Pipeline started"
+        rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline started** ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+      }
+    }
 ```
 
-<br>
-# Import pipeline into OpenShift (if not created already)
+When inserted correctly, the pipeline should start like this:
 
-If you created your pipeline in a text editor, you can import your text file in OpenShift.
+```
+pipeline {
+  agent {
+    label 'maven'
+  }
+  stages {
+    stage('Initialize') {
+      steps {
+        echo "Pipeline started"
+        rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline started** ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+      }
+    }
+    stage('Build App') {
+      steps {
+```
+With the rest of the pipeline continuing on from here.
 
-At the top right select Add to Project > Import YAML / JSON
 
-<img src="../images/import_yaml_json.png" width="500"><br/>
+Next, append the text below to the bottom of the Jenkins Pipeline Configuration.  Please make sure to append to the beginning of the next line.  
 
 
-Copy and Paste your pipeline from your text editor to your
+```
+  }
+  post {
+    success {
+      rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline success** :100: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+    }
+    unstable {
+      rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline unstable** :confused: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", avatar: 'https://jenkins.io/images/logos/fire/fire.png'
+    }
+    failure {
+      rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline failure** :sob: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", avatar: 'https://jenkins.io/images/logos/fire/fire.png'
+    }
+    always {
+      echo "Pipeline finished"
+    }
+  }
+}
+```
 
-Click Create and Close
-
-<img src="../images/import_pipeline.png" width="900"><br/>
-
-<br>
-# Run Pipeline
-
-Go to Builds > Pipeline
-
-Click Start Pipeline for the pipeline you just created called tasks-pipeline.
-
-Your pipeline should now execute through all the stages you created.  
-
-Go ahead and click View Log.  This will take you to the Jenkins logs and you can follow the various stages in your pipeline.
-
-When it asks to promote to stage, go ahead and promote it.
-
-<img src="../images/pipeline_execution.png" width="900"><br/>
-
-<br>
-# Explore Pipeline Run
-- Explore the snapshots repository in Nexus and verify tasks is pushed to the repository
-- Explore SonarQube and show the metrics, stats, code coverage, etc
-- Explore Tasks - Dev project in OpenShift console and verify the application is deployed in the DEV environment
-- Explore Tasks - Stage project in OpenShift console and verify the application is deployed in the STAGE environment
-
-Sonarqube metrics, stats, and code coverage can be seen such as this screenshot below.
-
-<img src="../images/sonarqube-analysis.png" width="900"><br/>
+Congratulations, this should be the final step in your Trusted Software Supply Chain.  Go on to the next lab to verify and run the pipeline.

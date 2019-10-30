@@ -43,8 +43,26 @@ Append the text below to the bottom of the Jenkins Pipeline Configuration.  Plea
         }
       }
     }
+```
+# Test Your Pipeline
+If you'd like to do a test of first pipeline stage, add the following brackets at the end of your Jenkinsfile. Make sure to append to the beginning of the last line.
+
+```
   }
 }
-```      
+```
 
-Congratulations, this should be the final step in your Trusted Software Supply Chain.  Go on to the next lab to verify and run the pipeline.
+Save your Jenkinsfile.
+
+Go back to Builds > Pipelines
+
+Click Start Pipeline
+
+# Delete Brackets
+Please delete the brackets you just added once testing is complete. We can add them later if you'd like to test your pipeline as you go along.
+
+```
+  }
+}
+```
+Click Save
