@@ -1,5 +1,5 @@
 ---
-title: Lab 16 - Run Pipeline
+title: Lab 17 - Run Pipeline
 workshops: secure_software_factory
 workshop_weight: 26
 layout: lab
@@ -50,12 +50,18 @@ spec:
               label 'maven'
             }
             stages {
+              stage('Initialize') {
+                steps {
+                  echo "Pipeline started"
+                  rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline started** ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+                }
+              }
               stage('Build App') {
                 steps {
                   git branch: 'eap-7', url: 'http://gogs:3000/gogs/openshift-tasks.git'
                   script {
-                      def pom = readMavenPom file: 'pom.xml'
-                      version = pom.version
+                    def pom = readMavenPom file: 'pom.xml'
+                    version = pom.version
                   }
                   sh "${mvnCmd} install -DskipTests=true"
                 }
@@ -179,6 +185,20 @@ spec:
                     }
                   }
                 }
+              }
+            }
+            post {
+              success {
+                rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline success** :100: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+              }
+              unstable {
+                rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline unstable** :confused: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", avatar: 'https://jenkins.io/images/logos/fire/fire.png'
+              }
+              failure {
+                rocketSend serverUrl: 'http://chat-dev.apps.rhocp.fiercesw.network', channel: 'general', rawMessage: true, message: "**Pipeline failure** :sob: ${env.JOB_NAME} #${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", avatar: 'https://jenkins.io/images/logos/fire/fire.png'
+              }
+              always {
+                echo "Pipeline finished"
               }
             }
           }
