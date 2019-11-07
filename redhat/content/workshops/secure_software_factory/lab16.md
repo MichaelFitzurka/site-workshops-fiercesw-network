@@ -4,8 +4,8 @@ workshops: secure_software_factory
 workshop_weight: 25
 layout: lab
 ---
-# ChatOps and Conversation-Driven DevOps
 
+# ChatOps and Conversation-Driven DevOps
 Chat rooms are not a new concept, dating back to the early days of the internet with dial-up Bulletin Board Services (BBS).  Technology has advanced greatly, but the idea of collaborating and communicating around topics
 with a recorded, searchable and time-stamped log of the conversation is as helpful today as it was then.
 
@@ -13,17 +13,14 @@ Conceptually ChatOps, or conversation-driven DevOps united with automated tools,
 
 Chat rooms become ChatOps with the addition of automated programs, called ChatBots or just simply bots, which integrate the commands and output of external tools into the communication stream.  In our pipeline, we will have a Jenkins bot announce to our chat room every time a pipeline has begun, as well as the status when it completes.  ChatOps can go much deeper with Robot Process Automation (RPA) listening to logs and acting accordingly, failing builds could be sent to ServiceNOW, and system-wide status reports could be triggered via a chat post with fully documented and time-stamped results.  Bots can even send commands to other bots inside the chat room, so that the automated workflow is completely transparent and readily understandable to all participants, human and non-human alike.  The integration of automated tools has pushed many teams from treating ChatOps as an amusing development tool into regarding it as a vital production support system.
 
-<br>
 # Append to Jenkins Pipeline Configuration
-
-In Builds > Pipelines > tasks-pipeline > Actions > Edit
+In Builds &rarr; Pipelines &rarr; tasks-pipeline &rarr; Actions &rarr; Edit
 
 <img src="../images/pipeline_actions_edit.png" width="900" />
 
 Insert the text below at line 7 in the Jenkins Pipeline Configuration, just after the line "stages {".  Please make sure to append to the beginning of the next line.  
 
-
-```
+```yaml
     stage('Initialize') {
       steps {
         echo "Pipeline started"
@@ -34,7 +31,7 @@ Insert the text below at line 7 in the Jenkins Pipeline Configuration, just afte
 
 When inserted correctly, the pipeline should start like this:
 
-```
+```yaml
 pipeline {
   agent {
     label 'maven'
@@ -49,13 +46,12 @@ pipeline {
     stage('Build App') {
       steps {
 ```
-With the rest of the pipeline continuing on from here.
 
+With the rest of the pipeline continuing on from here.
 
 Next, append the text below to the bottom of the Jenkins Pipeline Configuration.  Please make sure to append to the beginning of the next line.  
 
-
-```
+```yaml
   }
   post {
     success {

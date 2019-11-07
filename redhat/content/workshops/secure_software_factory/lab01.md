@@ -4,6 +4,7 @@ workshops: secure_software_factory
 workshop_weight: 11
 layout: lab
 ---
+
 # Welcome to OpenShift!
 This lab provides a quick tour of the console to help you get familiar with the user interface along with some key terminology we will use in subsequent lab content.
 
@@ -27,10 +28,10 @@ We will be using the following terms throughout the workshop labs so here are so
 OpenShift provides a web console that allows you to perform various tasks via a web browser.  Additionally, you can utilize a command line tool to perform tasks.  Let's get started by logging into both of these and checking the status of the platform.
 
 ## Let's Login to the Web Console
-Use your browser to navigate to the URI provided by your instructor and login with the user/password provided.
+Use your browser to navigate to the URI provided by your instructor and login with the user/password provided.  
 
 ```bash
-https://rhocp.fiercesw.network/
+https://master.dso.ocp.demo-dlt.com/
 ```
 
 <img src="../images/ocp-login.png" width="600"><br/>
@@ -41,9 +42,9 @@ Once logged in you should see your available projects - or a button to create a 
 ## Let's try the 'oc' command line (CLI) tool
 Open a terminal and login using the same URI with following command:
 
-```
-$ oc login https://rhocp.fiercesw.network/
-Authentication required for https://rhocp.fiercesw.network/ (openshift)
+```bash
+$ oc login https://master.dso.ocp.demo-dlt.com/
+Authentication required for https://master.dso.ocp.demo-dlt.com:443 (openshift)
  Username: <student_user_name>
  Password:
 Login successful.
@@ -51,18 +52,17 @@ Login successful.
 
 Check to see what projects you have access to:
 
-```
+```bash
 $ oc get projects
 ```
 
 Type the following command to show services, deployment configs, build configurations, and active deployments (this will come in handy later):
 
-```
+```bash
 $ oc status
 ```
 
-## A Note about Identity Management
-
+# A Note about Identity Management
 A person within your network has a single digital identity, but can have many user accounts to different resources, each with varying access controls per resource.  Identity management is the discipline of administering user access to these resources to keep the overall systems and data secure.
 
 OpenShift can be configured to allow users to register themselves, but when you need your access to be more securely controlled, OpenShift can leverage user authentication with an existing OAuth provider.  For our lab environment, we have secured our users with RHEL's Identity Management (IdM) server.

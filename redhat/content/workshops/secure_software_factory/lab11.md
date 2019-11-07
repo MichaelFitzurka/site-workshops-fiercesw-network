@@ -4,8 +4,8 @@ workshops: secure_software_factory
 workshop_weight: 21
 layout: lab
 ---
-# Add Build Image Stage
 
+# Add a Build Image Stage
 Add the Build Image Stage into your pipeline.
 
 <img src="../images/pipeline_oc_build_image.png" width="900" />
@@ -14,16 +14,14 @@ The "sh" are shell commands in your pipeline that are executed on the Jenkins Sl
 
 The startBuild stage is kicked off from Openshift and pointing to the local directory "oc-build" on the Jenkins slave.
 
-<br>
 # Append to Jenkins Pipeline Configuration
-
-In Builds > Pipelines > tasks-pipeline > Actions > Edit
+In Builds &rarr; Pipelines &rarr; tasks-pipeline &rarr; Actions &rarr; Edit
 
 <img src="../images/pipeline_actions_edit.png" width="900" />
 
 Append the text below to the bottom of the Jenkins Pipeline Configuration.  Please make sure to append to the beginning of the next line.  
 
-```
+```yaml
     stage('Build Image') {
       steps {
         sh "rm -rf oc-build && mkdir -p oc-build/deployments"
@@ -39,25 +37,27 @@ Append the text below to the bottom of the Jenkins Pipeline Configuration.  Plea
       }
     }
 ```
+
 # Test Your Pipeline
 If you'd like to do a test of first pipeline stage, add the following brackets at the end of your Jenkinsfile. Make sure to append to the beginning of the last line.
 
-```
+```yaml
   }
 }
 ```
 
 Save your Jenkinsfile.
 
-Go back to Builds > Pipelines
+Go back to Builds &rarr; Pipelines
 
 Click Start Pipeline
 
 # Delete Brackets
 Please delete the brackets you just added once testing is complete. We can add them later if you'd like to test your pipeline as you go along.
 
-```
+```yaml
   }
 }
 ```
+
 Click Save

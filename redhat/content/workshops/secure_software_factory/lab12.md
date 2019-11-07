@@ -4,8 +4,8 @@ workshops: secure_software_factory
 workshop_weight: 22
 layout: lab
 ---
-# Add Create Dev Stage
 
+# Add a Create Dev Stage
 Add Create Dev Stage into the pipeline.
 
 <img src="../images/pipeline_create_dev.png" width="900" />
@@ -14,16 +14,14 @@ We first check if an deployment config for the Dev Project already exists.  If i
 
 Before a trigger is created, the pipeline sleeps for 10 seconds.  A deployment configuration can contain triggers, which drive the creation of new deployment processes in response to events inside the cluster.  In this case, the trigger is set to a manual deployment of the tasks deployment config.  The deployment will happen in Deploy Stage.
 
-<br>
 # Append to Jenkins Pipeline Configuration
-
-In Builds > Pipelines > tasks-pipeline > Actions > Edit
+In Builds &rarr; Pipelines &rarr; tasks-pipeline &rarr; Actions &rarr; Edit
 
 <img src="../images/pipeline_actions_edit.png" width="900" />
 
 Append the text below to the bottom of the Jenkins Pipeline Configuration.  Please make sure to append to the beginning of the next line.  
 
-```
+```yaml
     stage('Create DEV') {
       when {
         expression {
@@ -56,22 +54,23 @@ Append the text below to the bottom of the Jenkins Pipeline Configuration.  Plea
 # Test Your Pipeline
 If you'd like to do a test of first pipeline stage, add the following brackets at the end of your Jenkinsfile. Make sure to append to the beginning of the last line.
 
-```
+```yaml
   }
 }
 ```
 
 Save your Jenkinsfile.
 
-Go back to Builds > Pipelines
+Go back to Builds &rarr; Pipelines
 
 Click Start Pipeline
 
 # Delete Brackets
 Please delete the brackets you just added once testing is complete. We can add them later if you'd like to test your pipeline as you go along.
 
-```
+```yaml
   }
 }
 ```
+
 Click Save

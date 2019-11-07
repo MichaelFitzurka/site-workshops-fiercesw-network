@@ -6,26 +6,23 @@ layout: lab
 toc: true
 ---
 
-# Add Build App Stage to Pipeline Text File
-
+# Add a Build App Stage
 Next, you will add the Build App Stage to your pipeline.
 
 <img src="../images/pipeline_build.png" width="900" />
 
-The git branch step will clone the openshift-tasks project with the git branch locally from your gogs server to your jenkins node.  The jenkins node is leveraging the [git jenkins plugin][1] to communicate to gogs.
+The git branch step will clone the openshift-tasks project with the git branch locally from your GitLab server to your Jenkins node.  The Jenkins node is leveraging the [git jenkins plugin][1] to communicate to GitLab.
 
 Please note that we are leveraging the eap-7 branch in our git project and not the master branch.
 
-<br>
 # Append to Jenkins Pipeline Configuration
-
-In Builds > Pipelines > tasks-pipeline > Actions > Edit
+In Builds &rarr; Pipelines &rarr; tasks-pipeline &rarr; Actions &rarr; Edit
 
 <img src="../images/pipeline_actions_edit.png" width="900" />
 
 Append the text below to the bottom of the Jenkins Pipeline Configuration.  Please make sure to append to the beginning of the next line.  
 
-```
+```yaml
   stages {
     stage('Build App') {
       steps {
@@ -47,7 +44,7 @@ Your Jenkinsfile should look like this.
 # Test Your Pipeline
 If you'd like to do a test of first pipeline stage, add the following brackets at the end of your Jenkinsfile. Make sure to append to the beginning of the last line.
 
-```
+```yaml
  }
 }
 ```
@@ -58,7 +55,7 @@ Your Jenkinsfile should look like this
 
 Click Save
 
-Go back to Builds > Pipelines
+Go back to Builds &rarr; Pipelines
 
 Click Start Pipeline
 
@@ -69,42 +66,40 @@ You should see your first stage run successfully.
 # Delete Brackets
 Please delete the brackets you just added once testing is complete. We can add them later if you'd like to test your pipeline as you go along.
 
-```
+```yaml
  }
 }
 ```
 
 Click Save
 
-
-<br>
-# View Source Code in Gogs
-
-View your gogs pod and click select the route (https://gogs...) to log into your gogs server.
+# View Source Code in GitLab
+View your GitLab pod and click select the route (https://gitlab&hellip;) to log into your GitLab server.
 
 Use the user name and password given to you by your instructor.
 
 <img src="../images/gogs_route.png" width="900"><br/>
 
-View the source of the openshift-tasks project in your gogs server.  
+View the source of the openshift-tasks project in your GitLab server.  
 
 <br>
 
 <img src="../images/gogs_home.png" width="900"><br/>
 
 # Maven
-
 Maven install will run through the [Maven lifecycle][2] and skip the tests.  We will execute tests later in the pipeline.
 
-- validate - validate the project is correct and all necessary information is available
-- compile - compile the source code of the project
-- test - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+- validate - validate the project is correct and all necessary information is available.
+- compile - compile the source code of the project.
+- test - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed.
 - package - take the compiled code and package it in its distributable format, such as a JAR.
-- verify - run any checks on results of integration tests to ensure quality criteria are met
-- install - install the package into the local repository, for use as a dependency in other projects locally
+- verify - run any checks on results of integration tests to ensure quality criteria are met.
+- install - install the package into the local repository, for use as a dependency in other projects locally.
 - deploy - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects.
 
+{{% alert info %}}
 NOTE: Throughout the course of these labs, you will build your application many times.  In order to shorten the build times of your pods, we will cache all Maven dependencies in a local Nexus Repository Manager pod.  We will discuss Nexus in more detail during the archiving step later in the pipeline.
+{{% /alert %}}
 
 [1]: https://jenkins.io/doc/pipeline/steps/git/
 [2]: https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html

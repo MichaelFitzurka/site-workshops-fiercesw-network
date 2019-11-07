@@ -4,10 +4,11 @@ workshops: secure_software_factory
 workshop_weight: 12
 layout: lab
 ---
+
 # Trusted Software Supply Chain
 The notion of Trusted Software Supply Chain is that of applying an assembly line approach to software that includes building increasing levels of assurance before marking an artifact as ready to deploy to production.
 
-In this workshop, you will use build orchestration tools such as Jenkins, Kubernetes, and OpenShift to support implementing and integrating [continuous delivery (CD)][1] as the foundation of automating the various stages of the deployment lifecycle are represented – from development, multiple types of testing, user acceptance, staging, to production release.
+In this workshop, you will use build orchestration tools such as CloudBees Enterprise Jenkins, Kubernetes, and OpenShift to support implementing and integrating [continuous delivery (CD)][1] as the foundation of automating the various stages of the deployment lifecycle are represented - from development, multiple types of testing, user acceptance, staging, to production release.
 
 <img src="../images/trusted_software_supply_chain.png" width="900" />
 
@@ -19,7 +20,7 @@ The approach towards the Authorization and Accreditation (A&A) process with Open
 
 <img src="../images/security_inheritance_model.png" width="700" />
 
-In Landlord/Tenant system security plans (SSP), many security controls are inherited from the Landlord’s SSP, but some controls remain the responsibility of the OpenShift consumers. Following this division of responsibilities illustrated in the diagram above, some controls would be considered the responsibility of the tenant, whereas a good number of controls are already taken care of by the Landlord.
+In Landlord/Tenant system security plans (SSP), many security controls are inherited from the Landlord's SSP, but some controls remain the responsibility of the OpenShift consumers. Following this division of responsibilities illustrated in the diagram above, some controls would be considered the responsibility of the tenant, whereas a good number of controls are already taken care of by the Landlord.
 
 [1]: https://en.wikipedia.org/wiki/Continuous_delivery
 [2]: https://cloud.gov/docs/compliance/ato-process/

@@ -7,7 +7,7 @@ menu:
 ---
 
 # Description
-In this workshop, you'll be building a Secure Software Factory for a Java based website leveraging several containerized tools such as Gogs, Nexus, Jenkins, Sonarqube, and Che hosted on the OpenShift Container Platform
+In this workshop, you'll be building a Secure Software Factory for a Java based website leveraging several containerized tools such as GitLab, Nexus, CloudBees Enterprise Jenkins, SonarQube, and Che hosted on the OpenShift Container Platform
 
 # Who Should Attend
 - Anyone who has had OpenShift 101
@@ -17,7 +17,7 @@ In this workshop, you'll be building a Secure Software Factory for a Java based 
 - Operations Engineers
 
 # What you will learn
-- A tiny bit of Jenkins
+- A tiny bit of CloudBees Enterprise Jenkins
 - Automating the development process
 - Trusted Software Supply Chain
 

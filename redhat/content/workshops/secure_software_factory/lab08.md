@@ -5,8 +5,7 @@ workshop_weight: 18
 layout: lab
 ---
 
-# Static Application Security Testing
-
+# Add a Static Application Security Testing Stage
 Next we will add a Code Analysis Stage into the pipeline.  
 
 <img src="../images/pipeline_sonar.png" width="900" />
@@ -21,23 +20,20 @@ We leverage the SonarQube maven plugin and specify the maven goal "sonar:sonar" 
 
 SonarQube's security rules originate from these standards:
 
-* [CWE Database][1] - Common Weakness Enumeration (CWE™) is a formal list or dictionary of common software weaknesses that can occur in software's architecture, design, code or implementation that can lead to exploitable security vulnerabilities.
+* [CWE Database][1] - Common Weakness Enumeration (CWE&trade;) is a formal list or dictionary of common software weaknesses that can occur in software's architecture, design, code or implementation that can lead to exploitable security vulnerabilities.
 
 * [SANS Top 25][2] - The SANS Top 25 list is a collection of the 25-most dangerous errors listed in the CWE, as compiled by the SANS organization.
 
 * [OWASP Top 10][3] - The OWASP Top 10 is a list of broad categories of weaknesses, each of which can map to many individual rules.
 
-<br>
 # Append to Jenkins Pipeline Configuration
-
-In Builds > Pipelines > tasks-pipeline > Actions > Edit
+In Builds &rarr; Pipelines &rarr; tasks-pipeline &rarr; Actions &rarr; Edit
 
 <img src="../images/pipeline_actions_edit.png" width="900" />
 
 Append the text below to the bottom of the Jenkins Pipeline Configuration.  Please make sure to append to the beginning of the next line.  
 
-
-```
+```yaml
     stage('Code Analysis') {
       steps {
         script {
@@ -46,35 +42,35 @@ Append the text below to the bottom of the Jenkins Pipeline Configuration.  Plea
       }
     }
 ```
-<br>
+
 # Test Your Pipeline
 If you'd like to do a test of first pipeline stage, add the following brackets at the end of your Jenkinsfile. Make sure to append to the beginning of the last line.
 
-```
+```yaml
   }
 }
 ```
 
 Save your Jenkinsfile.
 
-Go back to Builds > Pipelines
+Go back to Builds &rarr; Pipelines
 
 Click Start Pipeline
 
 # Delete Brackets
 Please delete the brackets you just added once testing is complete. We can add them later if you'd like to test your pipeline as you go along.
 
-```
+```yaml
   }
 }
 ```
+
 Click Save
 
 # SonarQube Dashboard
-
 Now that we have built and run the full pipeline, go into your CI/CD project and find the running SonarQube Pod.
 
-Click the external route (https://sonarqube…) to go into your SonarQube Server
+Click the external route (https://sonarqube&hellip;) to go into your SonarQube Server
 
 <img src="../images/sonarqube_pod.png" width="900" />
 
