@@ -5,19 +5,20 @@ workshop_weight: 15
 layout: lab
 ---
 
+# Jenkins Pipeline
 Today, you will be building  your Trusted Software Supply Chain using a Jenkins Pipeline that is integrated with OpenShift.
 
 In addition to standard Jenkins Pipeline Syntax, the OpenShift Jenkins image provides the OpenShift Domain Specific Language (DSL) (through the OpenShift Jenkins Client Plug-in), which aims to provide a readable, concise, comprehensive, and fluent syntax for rich interactions with an OpenShift API server, allowing for even more control over the build, deployment, and promotion of applications on your OpenShift cluster.
 
-Please refer to the [OpenShift Jenkins Pipelin(DSL) Plugin examples documentation][1] for more info.
+Please refer to the [OpenShift Jenkins Pipeline (DSL) Plugin examples documentation][1] for more info.
 
-First, we will need to create a [BuildConfig][2] that employs the [Pipeline Build][3] strategy for our Trusted Software Supply Chain. In the OpenShift Console, we’ll do this by clicking “Add to Project”, “Import YAML / JSON” while using the CI/CD project.
+First, we will need to create a [BuildConfig][2] that employs the [Pipeline Build][3] strategy for our Trusted Software Supply Chain. In the OpenShift Console, we'll do this by clicking "Add to Project", "Import YAML / JSON" while using the CI/CD project.
 
 <img src="../images/import_yaml.png" width="900" />
 
 Then copy & paste the following into the YAML/JSON input text field and click Create,
 
-```
+```yaml
 apiVersion: v1
 kind: BuildConfig
 metadata:
@@ -55,7 +56,7 @@ spec:
 
 Close the window once it's imported.
 
-Then go to “Builds” → “Pipelines” tab.
+Then go to "Builds" &rarr; "Pipelines" tab.
 
 <img src="../images/builds_pipelines.png" width="900" />
 
@@ -64,13 +65,13 @@ Verify that you see your "tasks pipeline" that you just imported.
 <img src="../images/tasks_pipeline.png" width="900" />
 
 
-Click on the “tasks-pipeline”
+Click on the "tasks-pipeline"
 
-Click Actions -> Edit YAML
+Click Actions &rarr; Edit YAML
 
 Update your user Dev and Stage projects to make sure reflects your user #.
 
-```
+```yaml
 strategy:
   jenkinsPipelineStrategy:
     env:
@@ -86,7 +87,7 @@ You will also be declaring variables such as version and mvnCmd to be used later
 
 The .xml file refers to maven configurations for your application. The reference to this .xml file from our pipeline can be seen here:
 
-```
+```yaml
         jenkinsfile: |-
           def version, mvnCmd = "mvn -s configuration/cicd-settings-nexus3.xml"
           pipeline {
@@ -98,5 +99,5 @@ The .xml file refers to maven configurations for your application. The reference
 Click Save
 
 [1]: https://github.com/openshift/jenkins-client-plugin#examples
-[2]: https://docs.openshift.com/container-platform/3.9/dev_guide/builds/index.html#defining-a-buildconfig
-[3]: https://docs.openshift.com/container-platform/3.9/architecture/core_concepts/builds_and_image_streams.html#pipeline-build
+[2]: https://docs.openshift.com/container-platform/3.11/dev_guide/builds/index.html#defining-a-buildconfig
+[3]: https://docs.openshift.com/container-platform/3.11/architecture/core_concepts/builds_and_image_streams.html#pipeline-build

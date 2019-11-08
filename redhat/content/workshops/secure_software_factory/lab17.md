@@ -4,17 +4,17 @@ workshops: secure_software_factory
 workshop_weight: 26
 layout: lab
 ---
-# Verify Completed Pipeline
 
+# Verify Completed Pipeline
 Before we kick off your pipeline, let's verify it.  
 
-In Builds > Pipelines > tasks-pipeline > Actions > Edit YAML
+In Builds &rarr; Pipelines &rarr; tasks-pipeline &rarr; Actions &rarr; Edit YAML
 
 <img src="../images/pipeline_actions_edityaml.png" width="900" />
 
 Take a look and see if it matches the below text.  If not, please correct it.
 
-```
+```yaml
 apiVersion: v1
 kind: BuildConfig
 metadata:
@@ -210,22 +210,19 @@ spec:
 
 In your pipeline text file, make sure \<user\> reflects your user # and project.
 
-```
+```yaml
 - name: DEV_PROJECT
   value: dev-<user>
 - name: STAGE_PROJECT
   value: stage-<user>
 ```
 
-<br>
 # Import pipeline into OpenShift (if not created already)
-
 If you created your pipeline in a text editor, you can import your text file in OpenShift.
 
-At the top right select Add to Project > Import YAML / JSON
+At the top right select Add to Project &rarr; Import YAML / JSON
 
 <img src="../images/import_yaml_json.png" width="500"><br/>
-
 
 Copy and Paste your pipeline from your text editor to your
 
@@ -233,10 +230,8 @@ Click Create and Close
 
 <img src="../images/import_pipeline.png" width="900"><br/>
 
-<br>
 # Run Pipeline
-
-Go to Builds > Pipeline
+Go to Builds &rarr; Pipeline
 
 Click Start Pipeline for the pipeline you just created called tasks-pipeline.
 
@@ -248,13 +243,12 @@ When it asks to promote to stage, go ahead and promote it.
 
 <img src="../images/pipeline_execution.png" width="900"><br/>
 
-<br>
 # Explore Pipeline Run
 - Explore the snapshots repository in Nexus and verify tasks is pushed to the repository
 - Explore SonarQube and show the metrics, stats, code coverage, etc
 - Explore Tasks - Dev project in OpenShift console and verify the application is deployed in the DEV environment
 - Explore Tasks - Stage project in OpenShift console and verify the application is deployed in the STAGE environment
 
-Sonarqube metrics, stats, and code coverage can be seen such as this screenshot below.
+SonarQube metrics, stats, and code coverage can be seen such as this screenshot below.
 
 <img src="../images/sonarqube-analysis.png" width="900"><br/>

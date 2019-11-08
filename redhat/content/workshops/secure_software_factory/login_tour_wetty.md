@@ -1,24 +1,23 @@
 ---
-title: Login Tour - Wetty
+title: Login Tour - WeTTy
 workshops: secure_software_factory
 workshop_weight: 10
 layout: lab
 ---
 
-# Introduction to Wetty (Browser-based SSH)
+# Introduction to WeTTy (Browser-based SSH)
+This lab provides a quick tour of the browser based SSH client, WeTTy, to help you get familiar with lab environment along with some key terminology we will use in subsequent lab content.
 
-This lab provides a quick tour of the browser based SSH client Wetty. To help you get familiar with lab environment along with some key terminology we will use in subsequent lab content.
-
-
-# Accessing Wetty
-
-Use this URL to access the Wetty node, just change the workshopname. Ask your instructor for the workshopname.
+## Accessing WeTTy
+Use this URL to access the WeTTy node.
 
 ```bash
 https://bastion.rhocp.fiercesw.network:8888
 ```
 
 ### Login Info
+Your instructor will provide the login information.
+
 ```bash
 login:    <Instructor Provided>
 Password: <Instructor Provided>
@@ -28,4 +27,4 @@ After logging in, you should see a shell.
 
 <img src="../images/wetty.png" width="1000" />
 
-The wetty instance will already have the 'oc' command installed on them. The 'oc' command is used to connect to the OpenShift Master.
+The WeTTy instance will already have the 'oc' command installed on them. The 'oc' command is used to connect to the OpenShift Master.
