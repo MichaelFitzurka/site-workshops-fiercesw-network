@@ -252,3 +252,6 @@ When it asks to promote to stage, go ahead and promote it.
 SonarQube metrics, stats, and code coverage can be seen such as this screenshot below.
 
 <img src="../images/sonarqube-analysis.png" width="900"><br/>
+
+
+{{< importPartial "footer/footer.html" >}}

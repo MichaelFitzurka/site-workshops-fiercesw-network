@@ -103,3 +103,6 @@ NOTE: Throughout the course of these labs, you will build your application many 
 
 [1]: https://jenkins.io/doc/pipeline/steps/git/
 [2]: https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
+
+
+{{< importPartial "footer/footer.html" >}}

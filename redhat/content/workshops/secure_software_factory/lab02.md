@@ -24,3 +24,5 @@ In Landlord/Tenant system security plans (SSP), many security controls are inher
 
 [1]: https://en.wikipedia.org/wiki/Continuous_delivery
 [2]: https://cloud.gov/docs/compliance/ato-process/
+
+{{< importPartial "footer/footer.html" >}}

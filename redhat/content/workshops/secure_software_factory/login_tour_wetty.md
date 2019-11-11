@@ -28,3 +28,6 @@ After logging in, you should see a shell.
 <img src="../images/wetty.png" width="1000" />
 
 The WeTTy instance will already have the 'oc' command installed on them. The 'oc' command is used to connect to the OpenShift Master.
+
+
+{{< importPartial "footer/footer.html" >}}

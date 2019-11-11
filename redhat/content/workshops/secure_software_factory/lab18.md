@@ -92,3 +92,6 @@ As soon the changes are committed to the git repository, a new instances of pipe
 Go Back to OpenShift and Promote to Stage to finish your Pipeline Run
 
 <img src="../images/pipeline_execution.png" width="900"><br/>
+
+
+{{< importPartial "footer/footer.html" >}}

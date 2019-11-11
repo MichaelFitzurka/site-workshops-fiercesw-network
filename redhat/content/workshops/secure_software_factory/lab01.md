@@ -73,3 +73,5 @@ With DevSecOps, the need is high to automate and secure the ever increasing deve
 
 # Summary
 You should now be ready to get hands-on with our workshop labs.
+
+{{< importPartial "footer/footer.html" >}}

@@ -79,3 +79,5 @@ Your Maven pom.xml file uniquely identifies your project as:
 Which is reflected in the Nexus directory structure above.
 
 Click on the "Browse" menu navigation again and this time select the "maven-public" repository to display all the third-party libraries that were used in building and testing your application.
+
+{{< importPartial "footer/footer.html" >}}

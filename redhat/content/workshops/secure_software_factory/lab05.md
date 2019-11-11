@@ -101,3 +101,6 @@ Click Save
 [1]: https://github.com/openshift/jenkins-client-plugin#examples
 [2]: https://docs.openshift.com/container-platform/3.11/dev_guide/builds/index.html#defining-a-buildconfig
 [3]: https://docs.openshift.com/container-platform/3.11/architecture/core_concepts/builds_and_image_streams.html#pipeline-build
+
+
+{{< importPartial "footer/footer.html" >}}

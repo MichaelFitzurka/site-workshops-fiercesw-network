@@ -71,3 +71,6 @@ Next, append the text below to the bottom of the Jenkins Pipeline Configuration.
 ```
 
 Congratulations, this should be the final step in your Trusted Software Supply Chain.  Go on to the next lab to verify and run the pipeline.
+
+
+{{< importPartial "footer/footer.html" >}}
