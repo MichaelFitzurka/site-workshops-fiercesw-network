@@ -1,7 +1,7 @@
 ---
 title: Login Tour - OpenShift Web UI
 workshops: secure_software_factory
-workshop_weight: 8
+workshop_weight: 2
 layout: lab
 ---
 

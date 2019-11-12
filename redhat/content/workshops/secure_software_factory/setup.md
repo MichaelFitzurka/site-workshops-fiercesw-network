@@ -1,7 +1,7 @@
 ---
 title: Workshop Setup
 workshops: secure_software_factory
-workshop_weight: 5
+workshop_weight: 1
 layout: lab
 ---
 
