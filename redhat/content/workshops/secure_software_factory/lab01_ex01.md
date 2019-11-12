@@ -1,5 +1,5 @@
 ---
-title: Lab 1, Exercise 1 - OSS Jenkins and OpenShift
+title: Lab 1, Exercise 1 - OpenShift, OSS Jenkins, and Slide Decks
 workshops: secure_software_factory
 workshop_weight: 15
 layout: lab
