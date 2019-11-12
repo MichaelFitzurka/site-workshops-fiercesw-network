@@ -50,7 +50,11 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Now that you have ordered and provisioned the Demo Slides App & Pipeline from the shared Project, you will find that OpenShift will automatically deploy an ephemeral Jenkins server when it detects a Jenkins-based Pipeline manifest.  Give the Jenkins Pods a few moments to start.
+        Now that you have ordered and provisioned the Demo Slides App & Pipeline from the shared Project, you will find that OpenShift will automatically deploy an ephemeral Jenkins server when it detects a Jenkins-based Pipeline manifest.
+
+        <br /><br />
+
+        Give the Jenkins Pods a few moments to start.
 
         </div>
 {{< /twoSideStep >}}
@@ -61,7 +65,9 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Once the Jenkins pod has started, start the Pipeline.  To do so, in the left hand pane, browse over to <strong><em>Builds > Pipelines</em></strong>.
+        Once the Jenkins pod has started, start the Pipeline.
+        <br /><br />
+        To do so, in the left hand pane, browse over to <strong><em>Builds > Pipelines</em></strong>.
 
         </div>
 {{< /twoSideStep >}}
@@ -73,7 +79,7 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         <div class="col-sm-12 col-lg-4">
 
         In the Pipelines listing, you should see the Pipeline that was ordered <strong><em>site-demo-app-slide-deck-pipeline</em></strong>.  Simply click <strong><em>Start Pipeline</em></strong> to begin the building process.
-
+        <br /><br />
         With the Pipeline started, continue to the next exercise.
 
         </div>

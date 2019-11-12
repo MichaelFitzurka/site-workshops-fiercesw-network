@@ -16,7 +16,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         <div class="col-sm-12 col-lg-4">
 
         At this point, you should find yourself with a failed Pipeline.
-
+        <br /><br />
         Click on one of the <strong><em>View Log</em></strong> links to find out what happened.
 
         </div>
@@ -30,7 +30,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         <div class="col-sm-12 col-lg-4">
 
         Once you click one of the <strong><em>View Log</em></strong> buttons, you'll be prompted to log into Jenkins with your OpenShift credentials.  OpenShift makes OAuth integration with your applications and services very simple, and here we have an implementation with the built-in Jenkins.
-
+        <br /><br />
         Click <strong><em>Log in with OpenShift</em></strong> provide your credentials, accept the <strong><em>Authorize Access</em></strong> screen, and you'll find yourself redirected to the logs from the Pipeline in Jenkins.
 
         </div>
@@ -43,7 +43,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         <div class="col-sm-12 col-lg-4">
 
         Now you should be presented with a long log of the previously ran Pipeline.
-
+        <br /><br />
         <strong><em>Hint</em></strong> Search the logs for the term 'TYPO' ;)
 
         </div>
@@ -56,7 +56,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         <div class="col-sm-12 col-lg-4">
 
         In order to alter the Pipeline, navigate back to your OpenShift Web Console, the <code>{{< user_info "user" "-slides" >}}</code> Project, return to the <strong><em>Builds > Pipelines</em></strong> screen.
-
+        <br /><br />
         Next, from the <strong><em>Actions</em></strong> dropdown to the right, select <strong><em>Edit</em></strong> (not <em>Edit YAML</em>).
 
         </div>
@@ -68,7 +68,9 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Since this was a deliberate error placed in the Pipeline, it should be easy to find and remedy.  Look for the <em>TYPO</em>, remove it, and click <strong><em>Save</em></strong>
+        Since this was a deliberate error placed in the Pipeline, it should be easy to find and remedy.
+        <br /><br />
+        Look for the <em>TYPO</em>, remove it, and click <strong><em>Save</em></strong>
 
         </div>
 {{< /twoSideStep >}}
@@ -79,7 +81,9 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        With the <em>TYPO</em> fixed, simple click the <strong><em>Start Pipeline</em></strong> button again to build the application.  Once the Pipeline has completed, you may find the built Slides application available in that Project.
+        With the <em>TYPO</em> fixed, simple click the <strong><em>Start Pipeline</em></strong> button again to build the application.
+        <br /><br />
+        Once the Pipeline has completed, you may find the built Slides application available in that Project.
 
         </div>
 {{< /twoSideStep >}}
@@ -90,15 +94,15 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        You should now have some insight into how the built-in OSS Jenkins on OpenShift operates.  The integrations are well architected and allow firing Jenkins Pipelines from OpenShift seamlessly.
+        You should now have some insight into how the built-in OSS Jenkins on OpenShift operates.  The integrations are well architected and allow firing Jenkins Pipelines from OpenShift seamlessly.<br /><br />
 
-        However, you may have also noticed a large red number with a series of warnings.  The issues presented are often serious vulnerabilities which could leave your CI/CD server open to malicious actors.  On top of the issues, here are a few other thoughts to consider:
-
-        - How do you manage this Jenkins instance for a team of developers?  Multiple teams?  Access, configuration, and plugin management are difficult across the enterprise.
-        - Do you really want developers with their own Jenkins server to do as they like?  Queue the "Works on my Jenkins" memes.
-        - Does Red Hat really know and support Jenkins well enough?  What about 3rd party integrations and plugins?
-        - Are you looking for DevOps and Jenkins expertise and training?
-
+        However, you may have also noticed a large red number with a series of warnings.  The issues presented are often serious vulnerabilities which could leave your CI/CD server open to malicious actors.  On top of the issues, here are a few other thoughts to consider:<br />
+        <ul>
+          <li>How do you manage this Jenkins instance for a team of developers?  Multiple teams?  Access, configuration, and plugin management are difficult across the enterprise.</li>
+          <li>Do you really want developers with their own Jenkins server to do as they like?  Queue the "Works on my Jenkins" memes.</li>
+          <li>Does Red Hat really know and support Jenkins well enough?  What about 3rd party integrations and plugins?</li>
+          <li>Are you looking for DevOps and Jenkins expertise and training?</li>
+          </ul>
         </div>
 {{< /twoSideStep >}}
 
