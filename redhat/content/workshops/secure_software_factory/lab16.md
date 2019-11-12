@@ -1,7 +1,7 @@
 ---
 title: Lab 16 - ChatOps and Conversation-Driven DevOps
 workshops: secure_software_factory
-workshop_weight: 25
+workshop_weight: 27
 layout: lab
 ---
 

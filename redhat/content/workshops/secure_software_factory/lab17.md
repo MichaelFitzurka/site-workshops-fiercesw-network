@@ -1,7 +1,7 @@
 ---
 title: Lab 17 - Run Pipeline
 workshops: secure_software_factory
-workshop_weight: 26
+workshop_weight: 28
 layout: lab
 ---
 

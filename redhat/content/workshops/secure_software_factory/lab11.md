@@ -1,7 +1,7 @@
 ---
 title:  Lab 11 - Build Image
 workshops: secure_software_factory
-workshop_weight: 21
+workshop_weight: 22
 layout: lab
 ---
 

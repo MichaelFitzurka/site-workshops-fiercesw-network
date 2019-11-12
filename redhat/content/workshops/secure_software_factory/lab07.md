@@ -1,7 +1,7 @@
 ---
 title: Lab 07 - Test Stage
 workshops: secure_software_factory
-workshop_weight: 17
+workshop_weight: 18
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Lab 14 - Promote to Stage
 workshops: secure_software_factory
-workshop_weight: 24
+workshop_weight: 25
 layout: lab
 ---
 

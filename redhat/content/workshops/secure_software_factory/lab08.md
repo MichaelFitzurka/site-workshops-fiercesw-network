@@ -1,7 +1,7 @@
 ---
 title: Lab 08 - Static Application Security Testing
 workshops: secure_software_factory
-workshop_weight: 18
+workshop_weight: 19
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Lab 12 - Create Dev
 workshops: secure_software_factory
-workshop_weight: 22
+workshop_weight: 23
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Lab 09 - Archive App Stage
 workshops: secure_software_factory
-workshop_weight: 19
+workshop_weight: 20
 layout: lab
 ---
 

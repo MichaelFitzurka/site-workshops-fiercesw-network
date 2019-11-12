@@ -1,7 +1,7 @@
 ---
 title: Lab 01 - Welcome to OpenShift
 workshops: secure_software_factory
-workshop_weight: 11
+workshop_weight: 12
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Lab 15 - Deploy Stage
 workshops: secure_software_factory
-workshop_weight: 25
+workshop_weight: 26
 layout: lab
 ---
 

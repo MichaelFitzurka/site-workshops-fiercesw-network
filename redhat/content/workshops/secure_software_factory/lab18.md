@@ -1,7 +1,7 @@
 ---
 title: Lab 18 - Trigger the Software Supply Chain
 workshops: secure_software_factory
-workshop_weight: 27
+workshop_weight: 29
 layout: lab
 ---
 

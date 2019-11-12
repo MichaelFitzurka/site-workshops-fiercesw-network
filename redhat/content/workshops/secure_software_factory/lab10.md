@@ -1,7 +1,7 @@
 ---
 title: Lab 10 - Create Image Builder
 workshops: secure_software_factory
-workshop_weight: 20
+workshop_weight: 21
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Lab 13 - Deploy Dev
 workshops: secure_software_factory
-workshop_weight: 23
+workshop_weight: 24
 layout: lab
 ---
 

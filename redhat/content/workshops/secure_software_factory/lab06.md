@@ -1,7 +1,7 @@
 ---
 title: Lab 06 - Build App Stage
 workshops: secure_software_factory
-workshop_weight: 16
+workshop_weight: 17
 layout: lab
 toc: true
 ---

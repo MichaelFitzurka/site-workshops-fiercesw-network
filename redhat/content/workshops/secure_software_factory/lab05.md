@@ -1,7 +1,7 @@
 ---
 title:  Lab 05 - Creating Your Pipeline
 workshops: secure_software_factory
-workshop_weight: 15
+workshop_weight: 16
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title:  Lab 03 - CI/CD Project and Pods
 workshops: secure_software_factory
-workshop_weight: 12
+workshop_weight: 14
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Lab 04 - CloudBees Enterprise Jenkins and OpenShift
 workshops: secure_software_factory
-workshop_weight: 14
+workshop_weight: 15
 layout: lab
 ---
 
