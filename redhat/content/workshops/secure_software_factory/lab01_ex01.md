@@ -21,7 +21,9 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        At the main OpenShift Web Console, click on the ***Create Project*** button, and create a new project named ```{{< user_info "user" "-slides" >}}```.  Click ***Create*** and enter the project you just created.
+        At the main OpenShift Web Console, click on the <strong><em>Create Project</em></strong> button, and create a new project named <code>{{< user_info "user" "-slides" >}}</code>.  <br /><br />
+
+        Click <strong><em>Create</em></strong> and enter the project you just created.
 
         </div>
 {{< /twoSideStep >}}
@@ -33,9 +35,11 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Next, click the ***Select from Project***, select the ***[Shared] Team Resources*** Project, and then choose the ***Workshop Demo - Slide Deck*** catalog option.
+        Next, click the <strong><em>Select from Project</em></strong>, select the <strong><em>[Shared] Team Resources</em></strong> Project, and then choose the <strong><em>Workshop Demo - Slide Deck</em></strong> catalog option.
 
-        Click ***Next*** and then click ***Create***.
+        <br /><br />
+
+        Click <strong><em>Next</em></strong> and then click <strong><em>Create</em></strong>.
 
         </div>
 {{< /twoSideStep >}}
@@ -57,7 +61,7 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Once the Jenkins pod has started, start the Pipeline.  To do so, in the left hand pane, browse over to ***Builds > Pipelines***
+        Once the Jenkins pod has started, start the Pipeline.  To do so, in the left hand pane, browse over to <strong><em>Builds > Pipelines</em></strong>.
 
         </div>
 {{< /twoSideStep >}}
@@ -68,7 +72,7 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        In the Pipelines listing, you should see the Pipeline that was ordered ***site-demo-app-slide-deck-pipeline***.  Simply click ***Start Pipeline*** to begin the building process.
+        In the Pipelines listing, you should see the Pipeline that was ordered <strong><em>site-demo-app-slide-deck-pipeline</em></strong>.  Simply click <strong><em>Start Pipeline</em></strong> to begin the building process.
 
         With the Pipeline started, continue to the next exercise.
 

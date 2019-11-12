@@ -17,7 +17,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
 
         At this point, you should find yourself with a failed Pipeline.
 
-        Click on one of the ***View Log*** links to find out what happened.
+        Click on one of the <strong><em>View Log</em></strong> links to find out what happened.
 
         </div>
 {{< /twoSideStep >}}
@@ -29,9 +29,9 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Once you click one of the ***View Log*** buttons, you'll be prompted to log into Jenkins with your OpenShift credentials.  OpenShift makes OAuth integration with your applications and services very simple, and here we have an implementation with the built-in Jenkins.
+        Once you click one of the <strong><em>View Log</em></strong> buttons, you'll be prompted to log into Jenkins with your OpenShift credentials.  OpenShift makes OAuth integration with your applications and services very simple, and here we have an implementation with the built-in Jenkins.
 
-        Click ***Log in with OpenShift***, provide your credentials, accept the ***Authorize Access*** screen, and you'll find yourself redirected to the logs from the Pipeline in Jenkins.
+        Click <strong><em>Log in with OpenShift</em></strong> provide your credentials, accept the <strong><em>Authorize Access</em></strong> screen, and you'll find yourself redirected to the logs from the Pipeline in Jenkins.
 
         </div>
 {{< /twoSideStep >}}
@@ -44,7 +44,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
 
         Now you should be presented with a long log of the previously ran Pipeline.
 
-        ***Hint:*** Search the logs for the term 'TYPO' ;)
+        <strong><em>Hint</em></strong> Search the logs for the term 'TYPO' ;)
 
         </div>
 {{< /twoSideStep >}}
@@ -55,9 +55,9 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        In order to alter the Pipeline, navigate back to your OpenShift Web Console, the ```{{< user_info "user" "-slides" >}}``` Project, return to the ***Builds > Pipelines*** screen.
+        In order to alter the Pipeline, navigate back to your OpenShift Web Console, the <code>{{< user_info "user" "-slides" >}}</code> Project, return to the <strong><em>Builds > Pipelines</em></strong> screen.
 
-        Next, from the ***Actions*** dropdown to the right, select ***Edit*** (not *Edit YAML*).
+        Next, from the <strong><em>Actions</em></strong> dropdown to the right, select <strong><em>Edit</em></strong> (not <em>Edit YAML</em>).
 
         </div>
 {{< /twoSideStep >}}
@@ -68,7 +68,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Since this was a deliberate error placed in the Pipeline, it should be easy to find and remedy.  Look for the *TYPO*, remove it, and click ***Save***.
+        Since this was a deliberate error placed in the Pipeline, it should be easy to find and remedy.  Look for the <em>TYPO</em>, remove it, and click <strong><em>Save</em></strong>
 
         </div>
 {{< /twoSideStep >}}
@@ -79,7 +79,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        With the *TYPO* fixed, simple click the ***Start Pipeline*** button again to build the application.  Once the Pipeline has completed, you may find the built Slides application available in that Project.
+        With the <em>TYPO</em> fixed, simple click the <strong><em>Start Pipeline</em></strong> button again to build the application.  Once the Pipeline has completed, you may find the built Slides application available in that Project.
 
         </div>
 {{< /twoSideStep >}}
