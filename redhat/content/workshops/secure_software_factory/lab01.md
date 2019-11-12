@@ -31,7 +31,7 @@ OpenShift provides a web console that allows you to perform various tasks via a 
 Use your browser to navigate to the URI provided by your instructor and login with the user/password provided.  
 
 ```bash
-https://master.dso.ocp.demo-dlt.com/
+{{< urifqdn_s2f "https://master." "" >}}
 ```
 
 <img src="../images/ocp-login.png" width="600"><br/>
@@ -43,8 +43,8 @@ Once logged in you should see your available projects - or a button to create a 
 Open a terminal and login using the same URI with following command:
 
 ```bash
-$ oc login https://master.dso.ocp.demo-dlt.com/
-Authentication required for https://master.dso.ocp.demo-dlt.com:443 (openshift)
+$ oc login {{< urifqdn_s2f "https://master." "" >}}
+Authentication required for {{< urifqdn_s2f "https://master." "" >}}:443 (openshift)
  Username: <student_user_name>
  Password:
 Login successful.

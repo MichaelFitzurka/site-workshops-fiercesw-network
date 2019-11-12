@@ -1,7 +1,7 @@
 ---
 title: Login Tour - WebSSH Terminal
 workshops: secure_software_factory
-workshop_weight: 3
+workshop_weight: 03
 layout: lab
 ---
 
