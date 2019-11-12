@@ -1,7 +1,7 @@
 ---
-title: Lab 01 - Welcome to OpenShift
+title: Welcome to OpenShift
 workshops: secure_software_factory
-workshop_weight: 11
+workshop_weight: 12
 layout: lab
 ---
 
@@ -27,11 +27,11 @@ We will be using the following terms throughout the workshop labs so here are so
 # Accessing OpenShift
 OpenShift provides a web console that allows you to perform various tasks via a web browser.  Additionally, you can utilize a command line tool to perform tasks.  Let's get started by logging into both of these and checking the status of the platform.
 
-## Let's Login to the Web Console
+## Web UI - Let's Login to the Web Console
 Use your browser to navigate to the URI provided by your instructor and login with the user/password provided.  
 
 ```bash
-https://master.dso.ocp.demo-dlt.com/
+{{< urifqdn_s2f "https://master." "" >}}
 ```
 
 <img src="../images/ocp-login.png" width="600"><br/>
@@ -39,12 +39,12 @@ https://master.dso.ocp.demo-dlt.com/
 
 Once logged in you should see your available projects - or a button to create a project if none exist already.
 
-## Let's try the 'oc' command line (CLI) tool
+## Terminal - Let's try the 'oc' command line (CLI) tool
 Open a terminal and login using the same URI with following command:
 
 ```bash
-$ oc login https://master.dso.ocp.demo-dlt.com/
-Authentication required for https://master.dso.ocp.demo-dlt.com:443 (openshift)
+$ oc login {{< urifqdn_s2f "https://master." "" >}}
+Authentication required for {{< urifqdn_s2f "https://master." "" >}}:443 (openshift)
  Username: <student_user_name>
  Password:
 Login successful.
@@ -65,11 +65,14 @@ $ oc status
 # A Note about Identity Management
 A person within your network has a single digital identity, but can have many user accounts to different resources, each with varying access controls per resource.  Identity management is the discipline of administering user access to these resources to keep the overall systems and data secure.
 
-OpenShift can be configured to allow users to register themselves, but when you need your access to be more securely controlled, OpenShift can leverage user authentication with an existing OAuth provider.  For our lab environment, we have secured our users with RHEL's Identity Management (IdM) server.
+OpenShift can be configured to allow users to register themselves, but when you need your access to be more securely controlled, OpenShift can leverage user authentication with an existing OAuth provider.  For our lab environment, we have secured our users with a Red Hat Identity Management (IdM) server.
 
 <img src="../images/idm-users.png" width="600"><br/>
 
-With DevSecOps, the need is high to automate and secure the ever increasing development, test, staging and production infrastructures with a coherent identity management strategy.  IdM provides our environment with Active Directory (LDAP) trusts, multi-product federation, configuration management with Ansible, integrated certificate management, and cybersecurity policy conformance.  All of this is managed within the network from one central location with CLI, Web UI or RPC access.  The IdM server also tightly integrates with DNS record management, which enables greater automation capabilities, and distributes SSH keys to LDAP integrated components, providing a secure way to share keys across environments.
+With DevSecOps, the need is high to automate and secure the ever increasing development, test, staging, and production infrastructures with a coherent identity management strategy.  IdM provides our environment with Active Directory-like (LDAP) trusts, multi-product federation, configuration management with Ansible, integrated certificate and key management, and cybersecurity policy conformance.  All of this is managed within the network from one central location with CLI, Web UI, or RPC access.  The IdM server also tightly integrates with DNS record management, which enables greater automation capabilities, and distributes SSH keys to LDAP integrated components, providing a secure way to share keys across environments.
 
 # Summary
-You should now be ready to get hands-on with our workshop labs.
+
+Now that we have logged in and covered the Identity and Access Management implementation, you may continue to the next exercise.
+
+{{< importPartial "footer/footer.html" >}}

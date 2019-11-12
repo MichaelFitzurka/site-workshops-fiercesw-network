@@ -52,6 +52,16 @@ figure {
   border-color: #b30000;
 }
 
+h2.stepTitle {
+    border-bottom: 1px solid;
+    padding: 2rem 1rem;
+    margin: 2rem 0;
+}
+.stepHolders div:nth-child(2) {
+    font-size: 14px;
+    padding-top: 2rem;
+}
+
 /* Small devices (tablets, 768px and up) */
 @media (min-width: @screen-sm-min) {
   #workshopFooterDetails {
