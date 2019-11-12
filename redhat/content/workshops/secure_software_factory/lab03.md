@@ -1,38 +1,39 @@
 ---
-title:  Lab 03 - CI/CD Project and Pods
+title:  Workshop Environment
 workshops: secure_software_factory
 workshop_weight: 14
 layout: lab
 ---
 
-# CI/CD Differences
-Before moving forward, it is important to understand the difference between [Continuous Integration (CI), Continuous Delivery (CD), and Continuous Deployment][1].
+# Workshop Environment
 
-Also, as part of this lab we'll be using using [Pipelines in OpenShift][2] for CI/CD, which gives you control over building, deploying, and promoting your applications on OpenShift.  Using a combination of the Jenkins Pipeline Build Strategy, Jenkinsfiles, and the OpenShift Domain Specific Language (DSL) (provided by the OpenShift Jenkins Client Plug-in), you can create advanced build, test, deploy, and promote pipelines for any scenario.
+This workshop will take you through a number of exercises, labs, projects, and vendor solutions.  Before we get started with building applications, containers, and pipelines, let us review the different resources and components in our environment.
 
-OK, let's go ahead and start building an OpenShift CI/CD Pipeline using the OpenShift Console.
+As part of this lab we'll be using using [Pipelines in OpenShift][1] for CI/CD, which gives you control over building, deploying, and promoting your applications on OpenShift.  Using a combination of the Jenkins Pipeline Build Strategy, Jenkinsfiles, and the OpenShift Domain Specific Language (DSL) (provided by the OpenShift Jenkins Client Plug-in), you can create advanced build, test, deploy, and promote pipelines for any scenario.
 
-First, go to the CI/CD Project to the right.
+After running the first Pipeline in OpenShift, this course will step you through deploying a Pipeline on a Team Master that's managed by CloudBees Core, and then an integrated Pipeline that leverages the best of both CloudBees Core and OpenShift.
 
-<img src="../images/ocp_cicd.png" width="900"><br/>
+## Projects
 
-If the project does not exists, then use the CLI and goto the terminal and type the following:
+Upon logging into OpenShift you'll find a number of pre-provisioned Projects available to your user - you may need to click the ***View All*** link to view all the available Projects.
 
-<a href="https://asciinema.org/a/188738?autoplay=1"><img src="https://asciinema.org/a/188738.png" width="900"/></a>
+<img src="../images/userDefaultProjects.png" width="600"><br/>
 
-Once inside the CI/CD Project, you will see the following pods running.  All of these pods are leveraged in building our application.
+- **[Shared] Central CI/CD** - This Project is shared among the workshop users and powers the CI/CD platform.  Here you'll find CloudBees Core, a managed Team Master, Sonatype Nexus & IQ Server, SonarQube, and other components to orchestrate our pipelines.
+- **[Shared] ChatOps** - Here we have a Rocket.Chat server deployed to implement ChatOps - what DevOps workshop is complete without an Open-Source Slack alternative?
+- **[Shared] Team Resources** - This is a Project that provides the workshop team a set of shared resources that can easily be self-provisioned such as a Demo App & Pipeline, Eclipse Che for a cloud-based IDE, and the Workshop Terminal
+- **Tasks - Production**, **Tasks - Stage**, & **Tasks - Test** - These namespaces are pre-provisioned and empty, though have the required Roles and Service Accounts needed to operate in and out of the various namespaces.
+- **User Dev** - This will be where your tools such as Eclipse Che and various pipelines will actually be deployed into.
 
-- Che pod - Eclipse Che is an open source browser based IDE.
-- GitLab pod - GitLab is an git source code repository.
-- Nexus pod - Nexus is an artifact repository.
-- Jenkins pod - CloudBees Enterprise Jenkins is a CI/CD tool.
-- SonarQube pod - SonarQube is an open source static code analysis tool.
+Once inside the **[Shared] Central CI/CD**, you will see the following pods running.  All of these pods are leveraged in building our application.
 
-It might take a few minutes for all pods to be deployed.
+- nexus pod - Sonatype Nexus is an artifact repository.
+- nexus-iq-server - IQ Server extends Sonatype Nexus with auditing, policy, and more.
+- cjoc - CloudBees Enterprise Jenkins is an enterprise CI/CD platform power by Jenkins.
+- sonarqube - SonarQube is an open source static code analysis tool.
 
-<img src="../images/cicd-pods.png" width="900"><br/>
+<img src="../images/central-cicdoverview.png" width="900"><br/>
 
-<br>
 # The Flow of the Trusted Software Supply Chain
 
 - CloudBees Enterprise Jenkins is the CI/CD tool that will execute the project.
@@ -49,7 +50,6 @@ It might take a few minutes for all pods to be deployed.
 <br>
 <img src="../images/pipeline.png" width="900"><br/>
 
-[1]: https://stackoverflow.com/questions/28608015/continuous-integration-vs-continuous-delivery-vs-continuous-deployment
-[2]: https://docs.openshift.com/container-platform/3.11/dev_guide/openshift_pipeline.html
+[1]: https://docs.openshift.com/container-platform/3.11/dev_guide/openshift_pipeline.html
 
 {{< importPartial "footer/footer.html" >}}

@@ -30,7 +30,7 @@ Password: <Instructor Provided>
 
 After logging in, you should be presented with the OpenShift Web Console.
 
--INSERT PICTURE OF PROJECT LISTINGS-
+<img src="../images/userDefaultProjects.png" width="600"><br/>
 
 ## Create a Project for you Terminal
 

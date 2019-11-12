@@ -1,5 +1,5 @@
 ---
-title: Lab 02 - Trusted Software Supply Chain
+title: Trusted Software Supply Chain
 workshops: secure_software_factory
 workshop_weight: 13
 layout: lab
@@ -22,7 +22,15 @@ The approach towards the Authorization and Accreditation (A&A) process with Open
 
 In Landlord/Tenant system security plans (SSP), many security controls are inherited from the Landlord's SSP, but some controls remain the responsibility of the OpenShift consumers. Following this division of responsibilities illustrated in the diagram above, some controls would be considered the responsibility of the tenant, whereas a good number of controls are already taken care of by the Landlord.
 
+# CI/CD Differences
+Before moving forward, it is important to understand the difference between [Continuous Integration (CI), Continuous Delivery (CD), and Continuous Deployment][3].
+
+# Summary
+
+Modern Software Development Lifecycles (SDLCs) require automation, integration, and management to develop and deploy with agility.  The agility often comes at the cost of security, though with key Open-Source platforms you can safe-guard your Software Supply Chain which helps develop worthy software.
+
 [1]: https://en.wikipedia.org/wiki/Continuous_delivery
 [2]: https://cloud.gov/docs/compliance/ato-process/
+[3]: https://stackoverflow.com/questions/28608015/continuous-integration-vs-continuous-delivery-vs-continuous-deployment
 
 {{< importPartial "footer/footer.html" >}}
