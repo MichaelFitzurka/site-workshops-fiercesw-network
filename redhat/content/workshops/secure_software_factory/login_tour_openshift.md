@@ -30,7 +30,6 @@ Password: <Instructor Provided>
 
 Once logging in, you should see a listing of your available personal and team shared Projects.
 
--INSERT PICTURE OF PROJECT LISTINGS-
-
+<img src="../images/userDefaultProjects.png" width="600"><br/>
 
 {{< importPartial "footer/footer.html" >}}
