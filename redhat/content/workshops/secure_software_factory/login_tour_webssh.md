@@ -32,7 +32,7 @@ After logging in, you should be presented with the OpenShift Web Console.
 
 <img src="../images/userDefaultProjects.png" width="600"><br/>
 
-## Create a Project for you Terminal
+## Create a Project for your Terminal
 
 Once logged in, click on the ***Create Project*** button, and create a new project named ```{{< user_info "user" "-terminal" >}}```.
 

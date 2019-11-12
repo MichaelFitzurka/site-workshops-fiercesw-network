@@ -13,7 +13,7 @@ CloudBees Enterprise Jenkins can be integrated with OpenShift in 3 ways.  Today,
 # Login through SSO with Jenkins
 Go into your CI/CD project and find the running Jenkins Pod.
 
-Click the external route (https://jenkins&hellip;) to go into your Jenkins Server
+Click the External Route to go into your Jenkins Server
 
 <img src="../images/jenkins_pod.png" width="900" />
 
