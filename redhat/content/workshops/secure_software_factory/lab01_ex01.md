@@ -77,7 +77,9 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        In the Pipelines listing, you should see the Pipeline that was ordered <strong><em>site-demo-app-slide-deck-pipeline</em></strong>.  Simply click <strong><em>Start Pipeline</em></strong> to begin the building process.
+        In the Pipelines listing, you should see the Pipeline that was ordered <strong><em>site-demo-app-slide-deck-pipeline</em></strong>.  
+        <br /><br />
+        Simply click <strong><em>Start Pipeline</em></strong> to begin the building process.
         <br /><br />
         With the Pipeline started, continue to the next exercise.
 
