@@ -12,7 +12,7 @@ A proper DevSecOps workflow revolves around GitOps.  To progress through this wo
 
 {{< twoSideStep title="1. Log into GitHub" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/cjocScreen.png" title="Git on the Hub" >}}
+                {{< figureImage src="../images/gitHubFrontPage.png" title="Git on the Hub" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
 
@@ -21,7 +21,7 @@ A proper DevSecOps workflow revolves around GitOps.  To progress through this wo
 
 {{< twoSideStep title="2. Fork the repository" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/cjocScreen.png" title="Make your own copy of the code" >}}
+                {{< figureImage src="../images/forkItGood.png" title="Make your own copy of the code" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
 
@@ -30,9 +30,18 @@ A proper DevSecOps workflow revolves around GitOps.  To progress through this wo
 
 {{< twoSideStep title="3. Primary concerns and components" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/cjocScreen.png" title="A few key files to note" >}}
+                {{< figureImage src="../images/repoFileListing.png" title="A few key files to note" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
+
+          Like any good Git repo, this is organized in a simple and easy to navigate fashion where all the logical concerns are separated into different atomic components.
+
+          <ul>
+            <li><strong><em>Jenkinsfile</em></strong> - This file, blah blah blah...</li>
+            <li><strong><em>openshift/build-config-pipeline.yaml</em></strong> - This file, blah blah blah...</li>
+            <li><strong><em>src/</em></strong> - This directory, blah blah blah...</li>
+            <li><strong><em>configuration/</em></strong> - This directory, blah blah blah...</li>
+          </ul>
 
         </div>
 {{< /twoSideStep >}}
