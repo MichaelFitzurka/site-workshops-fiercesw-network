@@ -6,7 +6,7 @@ layout: lab
 ---
 
 # Trusted Software Supply Chain
-The notion of Trusted Software Supply Chain is that of applying an assembly line approach to software that includes building increasing levels of assurance before marking an artifact as ready to deploy to production.
+The notion of a Trusted Software Supply Chain is that of applying an assembly line approach to software that includes building increasing levels of assurance before marking an artifact as ready to deploy to production.
 
 In this workshop, you will use build orchestration tools such as CloudBees Enterprise Jenkins, Kubernetes, and OpenShift to support implementing and integrating [continuous delivery (CD)][1] as the foundation of automating the various stages of the deployment lifecycle are represented - from development, multiple types of testing, user acceptance, staging, to production release.
 
@@ -26,7 +26,6 @@ In Landlord/Tenant system security plans (SSP), many security controls are inher
 Before moving forward, it is important to understand the difference between [Continuous Integration (CI), Continuous Delivery (CD), and Continuous Deployment][3].
 
 # Summary
-
 Modern Software Development Lifecycles (SDLCs) require automation, integration, and management to develop and deploy with agility.  The agility often comes at the cost of security, though with key Open-Source platforms you can safe-guard your Software Supply Chain which helps develop worthy software.
 
 [1]: https://en.wikipedia.org/wiki/Continuous_delivery

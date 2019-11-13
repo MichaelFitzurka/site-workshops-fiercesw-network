@@ -6,7 +6,6 @@ layout: lab
 ---
 
 # Integrated OSS Jenkins
-
 The provided Jenkins in OpenShift is adequate for quick tests and local development proof of concepts.  Outside of that, you'll find a series of issues and problems start to sprawl out of control.
 
 {{< twoSideStep title="1. Failed Pipeline?" >}}
@@ -15,7 +14,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        At this point, you should find yourself with a failed Pipeline.
+        Eventually you should find yourself with a failed Pipeline.
         <br /><br />
         Click on one of the <strong><em>View Log</em></strong> links to find out what happened.
 
@@ -29,9 +28,9 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Once you click one of the <strong><em>View Log</em></strong> buttons, you'll be prompted to log into Jenkins with your OpenShift credentials.  OpenShift makes OAuth integration with your applications and services very simple, and here we have an implementation with the built-in Jenkins.
+        You'll be prompted to log into Jenkins with your OpenShift credentials.  OpenShift makes OAuth integration with your applications and services very simple, and here we have an implementation with the built-in Jenkins.
         <br /><br />
-        Click <strong><em>Log in with OpenShift</em></strong> provide your credentials, accept the <strong><em>Authorize Access</em></strong> screen, and you'll find yourself redirected to the logs from the Pipeline in Jenkins.
+        Click <strong><em>Log in with OpenShift</em></strong>, provide your OpenShift credentials, accept the <strong><em>Authorize Access</em></strong> screen, and you'll find yourself redirected to the logs from the Pipeline in Jenkins.
 
         </div>
 {{< /twoSideStep >}}
@@ -55,7 +54,7 @@ The provided Jenkins in OpenShift is adequate for quick tests and local developm
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        In order to alter the Pipeline, navigate back to your OpenShift Web Console, the <code>{{< user_info "user" "-slides" >}}</code> Project, return to the <strong><em>Builds > Pipelines</em></strong> screen.
+        In order to alter the Pipeline, navigate back to your OpenShift Web Console, in the <code>{{< user_info "user" "-slides" >}}</code> project and return to the <strong><em>Builds > Pipelines</em></strong> screen.
         <br /><br />
         Next, from the <strong><em>Actions</em></strong> dropdown to the right, select <strong><em>Edit</em></strong> (not <em>Edit YAML</em>).
 
