@@ -6,12 +6,11 @@ layout: lab
 ---
 
 # Built-in OSS Jenkins
-Red Hat OpenShift provides a curated version Jenkins.  It can be integrated with OpenShift in 3 ways.  First, you'll be working with a containerized OSS Jenkins Server that's fully integrated with OpenShift.
+Red Hat OpenShift provides a curated version of Jenkins which can be integrated with OpenShift in 3 ways.  First, you'll be working with a containerized OSS Jenkins Server that's fully integrated with OpenShift.
 
 <img src="../images/jenkins_integrated.png" width="900" />
 
 # Order the Demo App - Slides
-
 The first application and pipeline that we'll be building today is a NodeJS-based Slideshow platform called [RevealJS][1].
 To build the application and drive the pipeline we'll use the integrated OSS Jenkins-as-a-Service.
 
@@ -35,11 +34,11 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
         </div>
         <div class="col-sm-12 col-lg-4">
 
-        Next, click the <strong><em>Select from Project</em></strong>, select the <strong><em>[Shared] Team Resources</em></strong> Project, and then choose the <strong><em>Workshop Demo - Slide Deck</em></strong> catalog option.
+        Next, click the <strong><em>Select from Project</em></strong> button, select the <strong><em>[Shared] Team Resources</em></strong> Project, and then choose the <strong><em>Workshop Demo - Slide Deck</em></strong> catalog option.
 
         <br /><br />
 
-        Click <strong><em>Next</em></strong> and then click <strong><em>Create</em></strong>.
+        Click <strong><em>Next</em></strong> twice and then click <strong><em>Create</em></strong> followed by <strong><em>Close</em></strong>.
 
         </div>
 {{< /twoSideStep >}}
@@ -86,7 +85,6 @@ To build the application and drive the pipeline we'll use the integrated OSS Jen
 
         </div>
 {{< /twoSideStep >}}
-
 
 [1]: https://revealjs.com/
 
