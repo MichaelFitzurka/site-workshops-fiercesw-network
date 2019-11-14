@@ -12,7 +12,9 @@ You could easily modify the files via the GitHub Web UI, or alternatively we can
 
 {{< twoSideStep title="1. Navigate to your User Dev project" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/gitHubFrontPage.png" title="Git on the Hub" >}}
+                {{< figureImage src="../images/createCheProject.png" title="Create a new Project for Che" >}}
+                {{< figureImage src="../images/enterCheProject.png" title="Load your Che Project" >}}
+                {{< figureImage src="../images/selectProjectAction.png" title="Click 'Select from Project'" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
 
@@ -21,7 +23,7 @@ You could easily modify the files via the GitHub Web UI, or alternatively we can
 
 {{< twoSideStep title="2. Order Che from the [Shared] Team Resources Project" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/forkItGood.png" title="Make your own copy of the code" >}}
+                {{< figureImage src="../images/selectedCheOption.png" title="Order a Che environment" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
 
@@ -30,7 +32,8 @@ You could easily modify the files via the GitHub Web UI, or alternatively we can
 
 {{< twoSideStep title="3. Load Eclipse Che" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/repoFileListing.png" title="A few key files to note" >}}
+                {{< figureImage src="../images/cheIsDeployed.png" title="A completed Che Deployment Config - click the Route" >}}
+                {{< figureImage src="../images/emptyChe.png" title="A new instance of Che will greet you with the New Workspace Wizard" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
 
@@ -39,16 +42,17 @@ You could easily modify the files via the GitHub Web UI, or alternatively we can
 
 {{< twoSideStep title="4. Create Workspace" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/repoFileListing.png" title="A few key files to note" >}}
+                {{< figureImage src="../images/createCheWorkspace.png" title="Set your configuration as such, substituting your fork of the repo" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
 
         </div>
 {{< /twoSideStep >}}
 
-{{< twoSideStep title="5. Modify imported code base" >}}
+{{< twoSideStep title="5. Open and Start the Workspace" >}}
         <div class="col-sm-12 col-lg-8">
-                {{< figureImage src="../images/repoFileListing.png" title="A few key files to note" >}}
+                {{< figureImage src="../images/cheClickOpen.png" title="Click the Open button" >}}
+                {{< figureImage src="../images/cheClickStartWorkspace.png" title="Start your workspace" >}}
         </div>
         <div class="col-sm-12 col-lg-4">
 
