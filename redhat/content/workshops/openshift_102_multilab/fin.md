@@ -1,7 +1,7 @@
 ---
 title: Fin.
-workshops: openshift_101_dcmetromap
-workshop_weight: 20
+workshops: openshift_102_multilab
+workshop_weight: 21
 layout: lab
 ---
 
