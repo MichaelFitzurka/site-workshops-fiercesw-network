@@ -1,6 +1,6 @@
 ---
 title: Verify Prerequisites
-workshops: openshift_101_dcmetromap
+workshops: openshift_102_multilab
 workshop_weight: 0
 layout: lab
 ---
@@ -10,7 +10,7 @@ layout: lab
 
 
 {{% alert success %}}
-This workshop is done entirely through the browser, but you do need a free personal GitHub account. 
+This workshop is done entirely through the browser, but you do need a free personal GitHub account.
 {{% /alert %}}
 
 ## Create a Github account
