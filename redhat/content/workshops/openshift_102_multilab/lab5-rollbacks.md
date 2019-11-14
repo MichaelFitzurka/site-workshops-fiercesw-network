@@ -1,7 +1,7 @@
 ---
 title: Lab 5 - Webhooks and Rollbacks
 workshops: openshift_102_multilab
-workshop_weight: 17
+workshop_weight: 18
 layout: lab
 ---
 

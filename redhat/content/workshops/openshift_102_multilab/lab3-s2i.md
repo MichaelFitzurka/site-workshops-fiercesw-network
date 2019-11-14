@@ -1,7 +1,7 @@
 ---
 title: Lab 3 - Deploying an App with S2I
 workshops: openshift_102_multilab
-workshop_weight: 15
+workshop_weight: 16
 layout: lab
 ---
 

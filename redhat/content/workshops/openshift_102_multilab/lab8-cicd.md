@@ -1,7 +1,7 @@
 ---
 title: Lab 8 - CI / CD Pipeline
 workshops: openshift_102_multilab
-workshop_weight: 20
+workshop_weight: 21
 layout: lab
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Fin.
 workshops: openshift_102_multilab
-workshop_weight: 21
+workshop_weight: 22
 layout: lab
 ---
 
