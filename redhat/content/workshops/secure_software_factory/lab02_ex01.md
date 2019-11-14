@@ -15,6 +15,8 @@ Now that we've seen how the OSS Jenkins in OpenShift operates and some of the di
         </div>
         <div class="col-sm-12 col-lg-4">
 
+        From the OpenShift home page, select the **[Shared] Central CI/CD** project.  Scroll down and find the **cjoc** pod, which stands for "CloudBees Jenkins Operations Center", and click the route.  Login with your same user and password information.<br /><br />
+
         Hey!  No big red boxes!<br /><br />
 
         Survey after survey shows Jenkins is the most popular open source automation server - and for good reason. However, Jenkins alone often lacks what teams need as continuous delivery scales across an organization. CloudBees Core extends Jenkins with functionality that embeds best practices, supports rapid on-boarding, provides tools for easier admin management and is based on an architecture that was built for scalability. You get enterprise-level benefits along with the Jenkins automation you already love.
@@ -29,6 +31,8 @@ Now that we've seen how the OSS Jenkins in OpenShift operates and some of the di
         </div>
         <div class="col-sm-12 col-lg-4">
 
+        Return to the OpenShift home page and find the **nexus** pod.  Click the route, and login with your user and password.  Again return to OpenShift and find the **nexus-iq-server** pod.  Click the route, and again login with your user and password.
+        <br /><br />
         Where do your components come from?  What vulnerabilities are lurking baked deep in your application?  Do you consume any volatile licenses?
         <br /><br />
         The Sonatype integrated open source governance platform (Nexus) helps more than 1,000 organizations and 10 million software developers simultaneously accelerate innovation and improve application security.  Their machine learning engine (Nexus Intelligence) has analyzed more than 65 million open source components. We continuously feed this intelligence to our customers so they make better innovation decisions early and everywhere across their development lifecycle.
