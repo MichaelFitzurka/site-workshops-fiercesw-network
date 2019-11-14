@@ -29,6 +29,6 @@ $ oc status
 ```
 
 # Summary
-Now that we have logged in and covered the Identity and Access Management implementation, you may continue to the next exercise.
+Now that we have logged in you may continue to the next exercise.
 
 {{< importPartial "footer/footer.html" >}}
