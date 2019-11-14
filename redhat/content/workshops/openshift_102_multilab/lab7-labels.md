@@ -1,7 +1,7 @@
 ---
 title: Lab 7 - Labels
 workshops: openshift_102_multilab
-workshop_weight: 20
+workshop_weight: 21
 layout: lab
 ---
 

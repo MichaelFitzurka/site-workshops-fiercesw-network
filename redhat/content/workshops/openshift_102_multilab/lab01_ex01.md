@@ -1,7 +1,7 @@
 ---
-title: Lab 1, Exercise 1 - OpenShift, OSS Jenkins, and Slide Decks
+title: Lab 1 - OpenShift, OSS Jenkins, and Slide Decks
 workshops: openshift_102_multilab
-workshop_weight: 13
+workshop_weight: 15
 layout: lab
 ---
 

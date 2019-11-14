@@ -1,7 +1,7 @@
 ---
-title: Lab 1, Exercise 2 - OSS Jenkins Gotchas
+title: Lab 2 - OSS Jenkins Gotchas
 workshops: openshift_102_multilab
-workshop_weight: 14
+workshop_weight: 16
 layout: lab
 ---
 

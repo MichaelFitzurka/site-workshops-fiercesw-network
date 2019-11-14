@@ -1,7 +1,7 @@
 ---
 title: Lab 6 - Replication and Recovery
 workshops: openshift_102_multilab
-workshop_weight: 19
+workshop_weight: 20
 layout: lab
 ---
 
